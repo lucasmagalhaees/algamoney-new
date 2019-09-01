@@ -1,44 +1,47 @@
+<app-breadcrumb text="Pesquisar Lançamentos"></app-breadcrumb>
+
 <div class="container">
+
+  <div id="card-general">
+
+    <div class="ui-g">
+
+
+      <div class="ui-g-12 ui-fluid">
+        <label>Descrição</label>
+        <input type="text" pInputText />
+      </div>
+
+      <div class="ui-sm-12 ui-g-6 ui-lg-3 ui-fluid">
+          <label>Data Inicial</label>
+          <p-calendar dateFormat="dd/mm/yy" name="vencimento" [inline]="false" [readonlyInput]="false" [showIcon]="true"></p-calendar>
+        </div>
+        <div class="ui-sm-12 ui-g-6 ui-lg-3 mr-auto ui-fluid">
+          <label>Data Final</label>
+          <p-calendar dateFormat="dd/mm/yy" name="pagamento" [showIcon]="true"></p-calendar>
+        </div>
+
+      <div class="ui-g-12">
+        <button pButton type="button" label="Pesquisar"></button>
+
+      </div>
+
+    </div>
 
     <div class="ui-g">
       <div class="ui-g-12">
-      <h1>Lançamentos</h1>
-
-    </div>
-
-    <div class="ui-g-12 ui-fluid">
-      <label>Descrição</label>
-      <input type="text" pInputText />
-    </div>
-
-    <div class="ui-g-12">
-      <label style="display: block">Vencimento</label>
-      <input type="text" pInputText style="width: 95px"/>
-
-      <label style="margin-left: 5px">até</label>
-      <input type="text" pInputText style="width: 95px; margin-left: 5px"/>
-
-    </div>
-
-    <div class="ui-g-12">
-      <button pButton type="button" label="Pesquisar"></button>
-
-    </div>
-
-  </div>
-
-  <div class="ui-g">
-      <div class="ui-g-12">
          <app-lancamento-grid [lancamentos]="lancamentos"></app-lancamento-grid>
-    </div>
+        </div>
 
-    <div class="ui-g-12">
-        <button pButton label="Novo Lançamento"></button>
+        <div class="ui-g-12">
+          <button pButton label="Novo Lançamento"></button>
+
+        </div>
+
 
       </div>
 
 
-  </div>
-
+    </div>
 
   </div>

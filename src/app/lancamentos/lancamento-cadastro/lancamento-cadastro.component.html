@@ -1,34 +1,36 @@
+<app-breadcrumb text="Novo Lançamento"></app-breadcrumb>
+
 <div class="container">
+  <div id="card-general">
 
-  <form #lancamentoCadastro="ngForm">
 
-    <div class="ui-g">
-      <div class="ui-g-12">
-      <h1>Novo Lançamento</h1>
-    </div>
+    <form #lancamentoCadastro="ngForm">
 
-    <div class="ui-g-12">
-      <p-selectButton [options]="tipos" name="tipos" #tipo [(ngModel)]="tipoPadrao"></p-selectButton>
-    </div>
 
-    <div class="ui-sm-12 ui-g-6 ui-lg-3 ui-fluid">
-      <label>Vencimento</label>
-      <p-calendar dateFormat="dd/mm/yy" name="vencimento" [inline]="false" [readonlyInput]="false" [showIcon]="true"></p-calendar>
-    </div>
-    <div class="ui-sm-12 ui-g-6 ui-lg-3 mr-auto ui-fluid">
-      <label>{{ tipo.value === 'RECEITA' ? 'Recebimento' : 'Pagamento'}}</label>
-      <p-calendar dateFormat="dd/mm/yy" name="pagamento" [showIcon]="true"></p-calendar>
-    </div>
+      <div class="ui-g">
 
-    <div class="ui-g-12 ui-lg-9 ui-fluid">
-      <label>Descrição </label>
-      <input type="text" name="descricao" name="descricao" ngModel #descricao="ngModel" required minlength="5" pInputText/>
-      <app-message [control]="descricao" error="required" text="Informe uma descrição"></app-message>
-      <app-message [control]="descricao" error="minlength" text="Mínimo de 5 caracteres"></app-message>
-    </div>
-    <div class="ui-g-12 ui-lg-3 ui-fluid">
-      <label>Valor</label>
-      <input pInputText name="valor" placeholder="0,00" required #valor="ngModel" currencyMask [(ngModel)]="value" [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',', allowNegative: false }"/>
+        <div class="ui-g-12">
+          <p-selectButton [options]="tipos" name="tipos" #tipo [(ngModel)]="tipoPadrao"></p-selectButton>
+        </div>
+
+        <div class="ui-sm-12 ui-g-6 ui-lg-3 ui-fluid">
+          <label>Vencimento</label>
+          <p-calendar dateFormat="dd/mm/yy" name="vencimento" [inline]="false" [readonlyInput]="false" [showIcon]="true"></p-calendar>
+        </div>
+        <div class="ui-sm-12 ui-g-6 ui-lg-3 mr-auto ui-fluid">
+          <label>{{ tipo.value === 'RECEITA' ? 'Recebimento' : 'Pagamento'}}</label>
+          <p-calendar dateFormat="dd/mm/yy" name="pagamento" [showIcon]="true"></p-calendar>
+        </div>
+
+        <div class="ui-g-12 ui-lg-9 ui-fluid">
+          <label>Descrição </label>
+          <input type="text" name="descricao" name="descricao" ngModel #descricao="ngModel" required minlength="5" pInputText/>
+          <app-message [control]="descricao" error="required" text="Informe uma descrição"></app-message>
+          <app-message [control]="descricao" error="minlength" text="Mínimo de 5 caracteres"></app-message>
+        </div>
+        <div class="ui-g-12 ui-lg-3 ui-fluid">
+          <label>Valor</label>
+          <input pInputText name="valor" placeholder="0,00" required #valor="ngModel" currencyMask [(ngModel)]="value" [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',', allowNegative: false }"/>
       <app-message [control]="valor" error="required" text="Informe um valor"></app-message>
 
     </div>
@@ -61,4 +63,5 @@
   </div>
 
 </form>
+</div>
   </div>
