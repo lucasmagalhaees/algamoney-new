@@ -1,5 +1,5 @@
 
-.navbar {
+#main-header {
   padding: 10px 0;
   background-color: #1e94d2;
   position: fixed;
@@ -7,9 +7,35 @@
   left: 0;
   right: 0;
   z-index: 999;
+  height: 72px;
+  color: white;
 }
 
 .navbar-toggle {
   color: #fff;
+  font-size: 25px;
+  position: relative;
+  top: -7px;
 }
 
+
+#main-header .header-content{
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  height: 72px;
+  padding: 0 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+}
+
+.header-content i{
+  position: relative;
+  top: 4px;
+}
+.header-content h2{
+  position: relative;
+  top: -7px;
+}

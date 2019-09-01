@@ -7,8 +7,10 @@ body{
 
 
 .container{
-  width: 1170px;
+  padding-top: 110px;
+  width: 1120px;
   margin: 0 auto;
+  /* border: 2px solid red; */
 }
 
 #card-general{
@@ -16,6 +18,11 @@ body{
   border: 8px solid #f2f1f0;
   background: white;
   margin-top: 40px;
+  padding-bottom: 20px;
+}
+
+.form-buttons{
+  margin-top: 30px;
 }
 
 
