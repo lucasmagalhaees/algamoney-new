@@ -9,6 +9,7 @@ import { MenuComponent } from './menu/menu.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { ModToastComponent } from './mod-toast/mod-toast.component';
 import { ModMessageComponent } from './mod-message/mod-message.component';
+import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
 
 
 
@@ -25,7 +26,8 @@ import { ModMessageComponent } from './mod-message/mod-message.component';
     ValidacaoFormComponent,
     ModToastComponent,
     ToastModule,
-    ModMessageComponent
+    ModMessageComponent,
+    BreadcrumbComponent
 
   ],
   exports: [

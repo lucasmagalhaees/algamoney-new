@@ -1,3 +1,4 @@
+import { BreadcrumbComponent } from './utils/breadcrumb/breadcrumb.component';
 import { ModMessageComponent } from './utils/mod-message/mod-message.component';
 import { MessageService } from 'primeng/api';
 import { ToastModule } from 'primeng/toast';
@@ -51,7 +52,8 @@ import {PanelMenuModule} from 'primeng/panelmenu';
     LancamentoGridComponent,
     PessoaGridComponent,
     ModToastComponent,
-    ModMessageComponent
+    ModMessageComponent,
+    BreadcrumbComponent
   ],
   imports: [
     BrowserModule,
