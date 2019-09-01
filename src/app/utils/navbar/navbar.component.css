@@ -1,0 +1,15 @@
+
+.navbar {
+  padding: 10px 0;
+  background-color: #1e94d2;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+}
+
+.navbar-toggle {
+  color: #fff;
+}
+

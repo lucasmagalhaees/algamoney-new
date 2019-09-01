@@ -1,0 +1,64 @@
+<div class="container">
+
+  <form #lancamentoCadastro="ngForm">
+
+    <div class="ui-g">
+      <div class="ui-g-12">
+      <h1>Novo Lançamento</h1>
+    </div>
+
+    <div class="ui-g-12">
+      <p-selectButton [options]="tipos" name="tipos" #tipo [(ngModel)]="tipoPadrao"></p-selectButton>
+    </div>
+
+    <div class="ui-sm-12 ui-g-6 ui-lg-3 ui-fluid">
+      <label>Vencimento</label>
+      <p-calendar dateFormat="dd/mm/yy" name="vencimento" [inline]="false" [readonlyInput]="false" [showIcon]="true"></p-calendar>
+    </div>
+    <div class="ui-sm-12 ui-g-6 ui-lg-3 mr-auto ui-fluid">
+      <label>{{ tipo.value === 'RECEITA' ? 'Recebimento' : 'Pagamento'}}</label>
+      <p-calendar dateFormat="dd/mm/yy" name="pagamento" [showIcon]="true"></p-calendar>
+    </div>
+
+    <div class="ui-g-12 ui-lg-9 ui-fluid">
+      <label>Descrição </label>
+      <input type="text" name="descricao" name="descricao" ngModel #descricao="ngModel" required minlength="5" pInputText/>
+      <app-message [control]="descricao" error="required" text="Informe uma descrição"></app-message>
+      <app-message [control]="descricao" error="minlength" text="Mínimo de 5 caracteres"></app-message>
+    </div>
+    <div class="ui-g-12 ui-lg-3 ui-fluid">
+      <label>Valor</label>
+      <input pInputText name="valor" placeholder="0,00" required #valor="ngModel" currencyMask [(ngModel)]="value" [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',', allowNegative: false }"/>
+      <app-message [control]="valor" error="required" text="Informe um valor"></app-message>
+
+    </div>
+
+    <div class="ui-g-6 ui-sm-12 ui-fluid">
+      <label>Categoria</label>
+      <p-dropdown [options]="categorias" name="categoria" [autoWidth]="false" [filter]="true" [(ngModel)]="categoriaPadrao"></p-dropdown>
+    </div>
+    <div class="ui-g-6 ui-sm-12 ui-fluid">
+      <label>Pessoa</label>
+      <p-dropdown [options]="pessoas" name="pessoa" [autoWidth]="false"  [filter]="true" [(ngModel)]="pessoaPadrao"></p-dropdown>
+    </div>
+
+    <div class="ui-g-12 ui-fluid">
+      <label>Observação</label>
+      <textarea rows="3" name="observacao" pInputTextarea></textarea>
+    </div>
+
+
+    <div class="ui-g-12">
+      <button type="button" [disabled]="!lancamentoCadastro.valid" class="ui-button-raised text-weight-bold" pButton label="Salvar"></button>
+      <button type="button" class="ui-button-raised ui-button-info text-weight-bold text-white ml-2" pButton label="Novo"></button>
+      <button type="button" pButton pTooltip="Voltar para a pesquisa" tooltipPosition="right" class="ml-2 ui-button-raised ui-button-secondary" outcome="productDetail" icon="pi pi-search">
+      </button>
+
+
+    </div>
+
+
+  </div>
+
+</form>
+  </div>

@@ -1,0 +1,46 @@
+ {{ cliente | json }}
+ {{ cliente.errors | json }}
+
+
+<div class="container m-auto p-5">
+
+  <div *ngIf="usuarioForm.invalid && nome.dirty && nome.hasError('minlength') && email.dirty && email.hasError('email') && profissao.touched" class="alert alert-danger">
+    Preencha todos os campos corretamente
+  </div>
+
+
+  <form #usuarioForm="ngForm" (ngSubmit)="salvar(usuarioForm)">
+    <div class="form-group" [class.has-danger]="nome.invalid && nome.touched">
+      <label class="form-control-label">Nome</label>
+      <input type="text" class="form-control" [class.is-invalid]="nome.invalid && nome.touched" name="primeiroNome" [(ngModel)]="cliente.nome"  pattern="[a-zA-Z ]*" required minlength="10" #nome="ngModel">
+      <br>
+      <div [class.invalid-feedback]="nome.invalid && nome.touched" *ngIf="nome.hasError('required') && nome.touched">Informe um nome</div>
+      <div [class.invalid-feedback]="nome.invalid && nome.touched" *ngIf="nome.hasError('minlength') && nome.touched && nome.dirty">O nome deve ser completo</div>
+    </div>
+
+    <div class="form-group" [class.has-danger]="email.invalid && email.touched">
+      <label class="form-control-label">Email</label>
+      <input type="text" class="form-control" [class.is-invalid]="email.invalid && email.touched" name="emailValido" [(ngModel)]="cliente.email" required email #email="ngModel">
+      <br>
+      <div [class.invalid-feedback]="email.invalid && email.touched" *ngIf="email.hasError('required') && email.touched">Informe um email</div>
+      <div [class.invalid-feedback]="email.invalid && email.touched" *ngIf="email.hasError('email') && email.touched && nome.dirty">Informe um email válido</div>
+    </div>
+
+
+    <div class="form-group" [class.has-danger]="profissao.invalid && profissao.touched">
+      <label class="form-control-label">Profissão</label>
+      <select class="form-control" [class.is-invalid]="profissao.invalid && profissao.touched" name="profissao" [(ngModel)]="cliente.profissao" required #profissao="ngModel">
+        <option value="{{p}}" *ngFor = "let p of profissoes">{{p}}</option>
+      </select>
+      <br>
+      <div [class.invalid-feedback]="profissao.invalid && profissao.touched" *ngIf="profissao.hasError('required') && profissao.touched">Informe uma profissão</div>
+    </div>
+
+    <button type="submit" class="btn btn-primary" [disabled]="!usuarioForm.valid">Salvar</button>
+  </form>
+
+</div>
+
+
+
+

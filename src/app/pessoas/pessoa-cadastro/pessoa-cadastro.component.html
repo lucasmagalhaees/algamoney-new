@@ -1,0 +1,85 @@
+<div class="container">
+
+  <div id="card-general">
+
+
+    <form #pessoaForm="ngForm">
+
+    <div class="ui-g">
+
+
+     <div class="ui-g-12">
+       <p-selectButton [options]="tipos" name="tipos" #tipo [(ngModel)]="tipoPadrao"></p-selectButton>
+      </div>
+
+      <div class="ui-g-12 ui-fluid">
+      <label>Nome</label>
+      <input type="text" required minlength="10" name="nome" #nome="ngModel" ngModel pInputText/>
+      <app-mod-toast [control]="nome" error="required" text="Informe um nome"></app-mod-toast>
+      <app-mod-message [control]="nome" error="minlength" text="Mínimo de 10 caracteres"></app-mod-message>
+
+
+    </div>
+
+    <div class="ui-g-12 ui-lg-9 ui-fluid">
+      <label>Logradouro</label>
+      <input type="text" required #logradouro="ngModel" name="logradouro" ngModel pInputText/>
+      <app-mod-toast [control]="logradouro" error="required" text="Informe um logradouro"></app-mod-toast>
+
+
+    </div>
+    <div class="ui-g-12 ui-lg-3 ui-fluid">
+      <label>Número</label>
+      <input type="text" required #numero="ngModel" name="numero" ngModel pInputText/>
+      <app-mod-toast [control]="numero" error="required" text="Informe um número"></app-mod-toast>
+
+    </div>
+
+    <div class="ui-g-4 ui-sm-12 ui-fluid">
+        <label>Complemento</label>
+        <input type="text" required #complemento="ngModel" name="complemento" ngModel pInputText/>
+        <app-mod-toast [control]="complemento" error="required" text="Informe um complemento"></app-mod-toast>
+
+
+      </div>
+      <div class="ui-g-4 ui-sm-12 ui-fluid">
+        <label>Bairro</label>
+        <input type="text" required #bairro="ngModel" name="bairro" ngModel pInputText/>
+        <app-mod-toast [control]="bairro" error="required" text="Informe um bairro"></app-mod-toast>
+
+      </div>
+      <div class="ui-g-4 ui-sm-12 ui-fluid">
+        <label>CEP</label>
+        <p-inputMask required #cep="ngModel" name="cep" ngModel mask="99.999-999"></p-inputMask>
+        <app-mod-toast [control]="cep" error="required" text="Informe um CEP"></app-mod-toast>
+
+      </div>
+
+      <div class="ui-g-6 ui-sm-12 ui-fluid">
+        <label>Cidade</label>
+        <input type="text" #cidade="ngModel" name="cidade" ngModel required pInputText/>
+        <app-mod-toast [control]="cidade" error="required" text="Informe uma Cidade"></app-mod-toast>
+
+      </div>
+      <div class="ui-g-6 ui-sm-12 ui-fluid">
+        <label>Estado</label>
+        <input type="text" #estado="ngModel" name="estado" ngModel required pInputText/>
+        <app-mod-toast [control]="estado" error="required" text="Informe um Estado"></app-mod-toast>
+
+      </div>
+
+
+
+
+      <div class="ui-g-12">
+        <button type="button" [disabled]="!pessoaForm.valid" class="ui-button-raised text-weight-bold" pButton label="Salvar"></button>
+        <button type="button" class="ui-button-raised ui-button-info text-weight-bold text-white ml-2" pButton label="Novo"></button>
+        <button type="button" pButton pTooltip="Voltar para a pesquisa" tooltipPosition="right" class="ml-2 ui-button-raised ui-button-secondary" outcome="productDetail" icon="pi pi-search">
+        </button>
+
+
+      </div>
+    </div>
+  </form>
+</div>
+</div>
