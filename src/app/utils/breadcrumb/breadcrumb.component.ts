@@ -6,7 +6,7 @@ import { Component, OnInit, Input } from '@angular/core';
   <div id="main-header">
   <div class="header-content">
     <div>
-       <h2>Nova Pessoa</h2>
+       <h2>{{text}}</h2>
     </div>
 
     <div>
@@ -42,6 +42,7 @@ import { Component, OnInit, Input } from '@angular/core';
   }
   .header-content h2{
     position: relative;
+    font-size: 25px;
     top: -3px;
   }
 
