@@ -1,3 +1,4 @@
+import { LancamentoService } from './lancamentos/lancamento.service';
 import { BreadcrumbComponent } from './utils/breadcrumb/breadcrumb.component';
 import { ModMessageComponent } from './utils/mod-message/mod-message.component';
 import { MessageService } from 'primeng/api';
@@ -10,6 +11,8 @@ import {TableModule} from 'primeng/components/table/table';
 import {TooltipModule} from 'primeng/components/tooltip/tooltip';
 import {CalendarModule} from 'primeng/components/calendar/calendar';
 import {DropdownModule} from 'primeng/dropdown';
+import { HttpClientModule } from '@angular/common/http';
+
 
 
 import { AppComponent } from './app.component';
@@ -72,9 +75,12 @@ import {PanelMenuModule} from 'primeng/panelmenu';
     ToastModule,
     MessagesModule,
     MessageModule,
-    PanelMenuModule
+    PanelMenuModule,
+    HttpClientModule
     ],
-  providers: [MessageService],
+  providers: [
+    MessageService,
+    LancamentoService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

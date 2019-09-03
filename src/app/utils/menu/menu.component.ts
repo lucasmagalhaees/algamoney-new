@@ -17,14 +17,14 @@ export class MenuComponent {
   toggleMenu() {
     this.eventoNavbar.emit(this.menuState);
   }
-
+  ''
   ngOnInit() {
       this.items = [
           {
               label: 'Lançamentos',
               icon: 'pi pi-fw pi-dollar',
               items: [
-                  {label: 'Novo Lançamento', icon: 'pi pi-fw pi-plus'},
+                  {label: 'Novo Lançamento', icon: 'pi pi-fw pi-plus', url: 'http://www.google.com'},
                   {label: 'Pesquisar Lançamentos', icon: 'pi pi-fw pi-search'}
               ]
           }, {
