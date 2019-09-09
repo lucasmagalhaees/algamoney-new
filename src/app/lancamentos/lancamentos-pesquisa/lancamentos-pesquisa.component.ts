@@ -8,11 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LancamentosPesquisaComponent {
 
+  descricao: string;
   lancamentos = [];
+
+
+  ngOnInit() {
+    this.pesquisar();
+  }
+
   constructor(private lancamentoService: LancamentoService) {}
 
   pesquisar() {
-    this.lancamentoService.pesquisar()
+    this.lancamentoService.pesquisar({descricao: this.descricao})
       .then( lancamentos => this.lancamentos = lancamentos );
+      console.log(this.descricao);
   }
 }

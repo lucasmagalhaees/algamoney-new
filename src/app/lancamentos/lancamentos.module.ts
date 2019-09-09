@@ -1,4 +1,3 @@
-import { LancamentoGridComponent } from './lancamento-grid/lancamento-grid.component';
 import { LancamentoCadastroComponent } from './lancamento-cadastro/lancamento-cadastro.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -14,7 +13,6 @@ import { FormsModule } from '@angular/forms';
   [
     LancamentoCadastroComponent,
     LancamentosPesquisaComponent,
-    LancamentoGridComponent
   ],
   exports: [
     LancamentoCadastroComponent,

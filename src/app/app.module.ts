@@ -31,7 +31,6 @@ import {InputMaskModule} from 'primeng/components/inputmask/inputmask';
 import { CurrencyMaskModule } from 'ng2-currency-mask';
 import { ValidacaoFormComponent } from './utils/validacao-form/validacao-form.component';
 import { MessageComponent } from './utils/message/message.component';
-import { LancamentoGridComponent } from './lancamentos/lancamento-grid/lancamento-grid.component';
 import { PessoaGridComponent } from './pessoas/pessoa-grid/pessoa-grid.component';
 import { ModToastComponent } from './utils/mod-toast/mod-toast.component';
 import {MessagesModule} from 'primeng/messages';
@@ -52,7 +51,6 @@ import {PanelMenuModule} from 'primeng/panelmenu';
     PessoaCadastroComponent,
     ValidacaoFormComponent,
     MessageComponent,
-    LancamentoGridComponent,
     PessoaGridComponent,
     ModToastComponent,
     ModMessageComponent,

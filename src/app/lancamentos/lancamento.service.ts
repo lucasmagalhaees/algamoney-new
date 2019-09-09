@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient,HttpParams, HttpHeaders } from '@angular/common/http';
 import 'rxjs/add/operator/toPromise';
 
 
@@ -8,20 +8,35 @@ import 'rxjs/add/operator/toPromise';
 })
 export class LancamentoService {
 
-  lancamentosUrl = 'http://localhost:8080/lancamentos';
+  lancamentosUrl = 'https://alga-basic.herokuapp.com/lancamentos';
 
   constructor(private httpClient: HttpClient) { }
 
-pesquisar(): Promise<any> {
-  const headers = new HttpHeaders();
-  headers.append('Authorization', 'Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg==');
 
-  return this.httpClient.get(`${this.lancamentosUrl}?resumo`, {headers})
-  .toPromise()
-  .then(response => response);
-  // .then(response => response.json().content);
+  // httpOptions = {
+  //   headers: new HttpHeaders({
+  //     'Content-Type': 'application/json'
+  //   })
+  // }
+
+
+  pesquisar(filtro: any): Promise<any> {
+    const headers = new HttpHeaders().append('Authorization', 'Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg==');
+
+    let params = new HttpParams();
+
+    if (filtro.descricao) {
+        params = params.set('descricao', filtro.descricao);
+    }
+
+    return this.httpClient.get(`${this.lancamentosUrl}?resumo`, { headers, params })
+        .toPromise()
+        // tslint:disable-next-line: no-string-literal
+        .then(response => response['content']);
 }
 
+
 }
+
 
 
