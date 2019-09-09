@@ -21,6 +21,5 @@ export class LancamentosPesquisaComponent {
   pesquisar() {
     this.lancamentoService.pesquisar({descricao: this.descricao})
       .then( lancamentos => this.lancamentos = lancamentos );
-      console.log(this.descricao);
   }
 }

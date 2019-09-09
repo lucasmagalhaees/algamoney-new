@@ -6,7 +6,7 @@
 
     <div class="ui-g">
 
-      {{descricao}}
+      <form autocomplete="off" (ngSubmit)="pesquisar()">
 
       <div class="ui-g-12 ui-fluid">
         <label>Descrição</label>
@@ -26,6 +26,8 @@
         <button pButton type="button" label="Pesquisar"></button>
 
       </div>
+
+      </form>
 
     </div>
 

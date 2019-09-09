@@ -1,7 +1,10 @@
 import { Injectable } from '@angular/core';
-import { HttpClient,HttpParams, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 import 'rxjs/add/operator/toPromise';
 
+export interface LancamentoFiltro {
+  descricao: string;
+}
 
 @Injectable({
   providedIn: 'root'
@@ -20,7 +23,7 @@ export class LancamentoService {
   // }
 
 
-  pesquisar(filtro: any): Promise<any> {
+  pesquisar(filtro: LancamentoFiltro): Promise<any> {
     const headers = new HttpHeaders().append('Authorization', 'Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg==');
 
     let params = new HttpParams();
