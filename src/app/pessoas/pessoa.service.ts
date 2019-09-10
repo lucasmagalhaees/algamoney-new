@@ -4,6 +4,8 @@ import 'rxjs/add/operator/toPromise';
 
 export class PessoaFiltro {
   nome: string;
+  pagina = 0;
+  itensPorPagina = 5;
 }
 
 
@@ -25,10 +27,20 @@ export class PessoaService {
       params = params.set('nome', filtro.nome);
   }
 
+    params = params.set('page', filtro.pagina.toString());
+    params = params.set('size', filtro.itensPorPagina.toString());
+
     return this.httpClient.get(`${this.pessoasUrl}`, { headers, params })
     .toPromise()
     // tslint:disable-next-line: no-string-literal
-    .then(response => response);
+    .then(response => {
+      const pessoas = response['content']
+      const resultado = {
+        pessoas,
+        total: response['totalElements']
+      };
+      return resultado;
+    });
 
   }
 }
