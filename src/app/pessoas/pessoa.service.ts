@@ -5,7 +5,7 @@ import 'rxjs/add/operator/toPromise';
 export class PessoaFiltro {
   nome: string;
   pagina = 0;
-  itensPorPagina = 5;
+  itensPorPagina = 4;
 }
 
 
@@ -42,5 +42,12 @@ export class PessoaService {
       return resultado;
     });
 
+  }
+
+  listarTodas(): Promise<any>{
+    const headers = new HttpHeaders().append('Authorization', 'Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg==');
+    return this.httpClient.get(this.pessoasUrl, {headers})
+      .toPromise()
+      .then(response => response);
   }
 }

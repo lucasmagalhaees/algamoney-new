@@ -33,7 +33,7 @@
 
     <div class="ui-g">
       <div class="ui-g-12">
-          <p-table [value]="lancamentos" [paginator]="true"
+          <p-table #tabela [value]="lancamentos" [paginator]="true"
           [rows]="filtro.itensPorPagina" [totalRecords]="totalRegistros"
           (onLazyLoad)="aoMudarPagina($event)" [lazy]="true" [responsive]="true">
             <ng-template pTemplate="emptymessage">
@@ -60,8 +60,14 @@
                       <td class="text-center">{{lancamentos.dataPagamento | date: 'dd/MM/yyyy' }}</td>
                       <td class="text-center" [style.color]="lancamentos.tipo === 'DESPESA' ? 'red' : 'blue'">{{lancamentos.valor | number:'1.2-2'}}</td>
                       <td class="text-center">
-                          <button pButton icon="pi pi-pencil" pTooltip="Editar" tooltipPosition="top"></button>
-                          <button pButton icon="pi pi-trash" pTooltip="Excluir" tooltipPosition="top" style="margin-left:5px"></button>
+                        <ng-template let-lanc>
+                        </ng-template>
+                          <button pButton icon="pi pi-pencil"
+                          pTooltip="Editar"  tooltipPosition="top"></button>
+                          <button pButton icon="pi pi-trash"
+                          pTooltip="Excluir" tooltipPosition="top"
+                          (click)="excluir(lanc)"
+                          style="margin-left:5px"></button>
                       </td>
                     </tr>
               </ng-template>
