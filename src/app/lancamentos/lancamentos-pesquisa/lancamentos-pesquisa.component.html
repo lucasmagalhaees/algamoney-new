@@ -10,20 +10,20 @@
 
       <div class="ui-g-12 ui-fluid">
         <label>Descrição</label>
-        <input type="text" pInputText name="descricao" [(ngModel)]="descricao"/>
+        <input type="text" pInputText name="descricao" [(ngModel)]="filtro.descricao"/>
       </div>
 
       <div class="ui-sm-12 ui-g-6 ui-lg-3 ui-fluid">
-          <label>Data Inicial</label>
-          <p-calendar dateFormat="dd/mm/yy" name="vencimento" [inline]="false" [readonlyInput]="false" [showIcon]="true"></p-calendar>
+          <label>Vencimento</label>
+          <p-calendar dateFormat="dd/mm/yy" name="vencimentoInicio" [(ngModel)]="filtro.dataVencimentoInicio" [inline]="false" [readonlyInput]="false" [showIcon]="true"></p-calendar>
         </div>
         <div class="ui-sm-12 ui-g-6 ui-lg-3 mr-auto ui-fluid">
-          <label>Data Final</label>
-          <p-calendar dateFormat="dd/mm/yy" name="pagamento" [showIcon]="true"></p-calendar>
+          <label>Pagamento</label>
+          <p-calendar dateFormat="dd/mm/yy" name="vencimentoFim" [(ngModel)]="filtro.dataVencimentoFim" [showIcon]="true"></p-calendar>
         </div>
 
       <div class="ui-g-12">
-        <button pButton type="button" label="Pesquisar"></button>
+        <button pButton type="submit" label="Pesquisar"></button>
 
       </div>
 
@@ -33,8 +33,16 @@
 
     <div class="ui-g">
       <div class="ui-g-12">
-          <p-table [value]="lancamentos" [paginator]="true" [rows]="3" [responsive]="true">
-              <ng-template pTemplate="header">
+          <p-table [value]="lancamentos" [paginator]="true"
+          [rows]="filtro.itensPorPagina" [totalRecords]="totalRegistros"
+          (onLazyLoad)="aoMudarPagina($event)" [lazy]="true" [responsive]="true">
+            <ng-template pTemplate="emptymessage">
+           <p class="text-center py-2 w-100 d-block px-5 font-weight-bold display-5 text-nowrap">
+
+             Nenhum lançamento encontrado
+           </p>
+          </ng-template>
+            <ng-template pTemplate="header">
                 <tr>
                     <th>Pessoa</th>
                       <th>Descrição</th>
