@@ -44,22 +44,22 @@
           </ng-template>
             <ng-template pTemplate="header">
                 <tr>
-                    <th>Pessoa</th>
-                      <th>Descrição</th>
-                      <th class="col-valor-header">Vencimento</th>
-                      <th class="col-valor-header">Pagamento</th>
-                      <th class="col-valor-header">Valor</th>
-                      <th class="col-valor-header"></th>
+                      <th class="text-center">Pessoa</th>
+                      <th class="text-center">Descrição</th>
+                      <th class="text-center">Vencimento</th>
+                      <th class="text-center">Pagamento</th>
+                      <th class="text-center">Valor</th>
+                      <th class=""></th>
                   </tr>
               </ng-template>
               <ng-template pTemplate="body" let-lancamentos>
                   <tr>
-                      <td>{{lancamentos.pessoa}}</td>
-                      <td>{{lancamentos.descricao}}</td>
-                      <td class="col-valor-content">{{lancamentos.dataVencimento | date: 'dd/MM/yyyy' }}</td>
-                      <td class="col-valor-content">{{lancamentos.dataPagamento | date: 'dd/MM/yyyy' }}</td>
-                      <td class="col-valor-content" [style.color]="lancamentos.tipo === 'DESPESA' ? 'red' : 'blue'">{{lancamentos.valor | number:'1.2-2'}}</td>
-                      <td class="col-data-content">
+                      <td class="text-center">{{lancamentos.pessoa}}</td>
+                      <td class="text-center">{{lancamentos.descricao}}</td>
+                      <td class="text-center">{{lancamentos.dataVencimento | date: 'dd/MM/yyyy' }}</td>
+                      <td class="text-center">{{lancamentos.dataPagamento | date: 'dd/MM/yyyy' }}</td>
+                      <td class="text-center" [style.color]="lancamentos.tipo === 'DESPESA' ? 'red' : 'blue'">{{lancamentos.valor | number:'1.2-2'}}</td>
+                      <td class="text-center">
                           <button pButton icon="pi pi-pencil" pTooltip="Editar" tooltipPosition="top"></button>
                           <button pButton icon="pi pi-trash" pTooltip="Excluir" tooltipPosition="top" style="margin-left:5px"></button>
                       </td>

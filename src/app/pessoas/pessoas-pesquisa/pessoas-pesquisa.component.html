@@ -4,6 +4,7 @@
 
   <div id="card-general">
 
+    <form autocomplete="off" (ngSubmit)="pesquisar()">
 
     <div class="ui-g">
 
@@ -11,24 +12,18 @@
 
   <div class="ui-g-12 ui-fluid">
     <label>Nome</label>
-    <input type="text" pInputText />
+    <input type="text" pInputText name="nome" [(ngModel)]="filtro.nome"/>
   </div>
 
-  <!-- <div class="ui-g-12">
-    <label style="display: block">Vencimento</label>
-    <input type="text" pInputText style="width: 95px"/>
-
-    <label style="margin-left: 5px">até</label>
-    <input type="text" pInputText style="width: 95px; margin-left: 5px"/>
-
-  </div> -->
 
   <div class="ui-g-12">
-    <button pButton type="button" label="Pesquisar"></button>
+    <button pButton type="submit" label="Pesquisar"></button>
 
   </div>
 
 </div>
+</form>
+
 
 <div class="ui-g">
   <div class="ui-g-12">
@@ -36,20 +31,20 @@
       <p-table [value]="pessoas" [paginator]="true" [rows]="3" [responsive]="true">
           <ng-template pTemplate="header">
             <tr>
-                <th class="col-valor-header-2">Nome</th>
-                  <th class="col-valor-header-2">Cidade</th>
-                  <th class="col-valor-header">Estado</th>
-                  <th class="col-valor-header">Status</th>
-                  <th class="col-valor-header"></th>
+                  <th class="text-center">Nome</th>
+                  <th class="text-center">Cidade</th>
+                  <th class="text-center">Estado</th>
+                  <th class="text-center">Status</th>
+                  <th class="text-center"></th>
               </tr>
           </ng-template>
           <ng-template pTemplate="body" let-pessoas>
               <tr>
-                  <td>{{pessoas.nome}}</td>
-                  <td>{{pessoas.cidade}}</td>
-                  <td class="col-data-content">{{pessoas.estado}}</td>
-                  <td class="col-data-content" [pTooltip] = "pessoas.status === 'Ativo' ? 'Tornar Inativo' : 'Tornar Ativo'" tooltipPosition="top"><a style="color: inherit" href="#">{{pessoas.status}}</a></td>
-                  <td class="col-data-content">
+                  <td class="text-center">{{pessoas.nome}}</td>
+                  <td class="text-center">{{pessoas.endereco.cidade}}</td>
+                  <td class="text-center">{{pessoas.endereco.estado}}</td>
+                  <td class="text-center" [pTooltip] = "pessoas.ativo === 'Ativo' ? 'Tornar Ativo' : 'Tornar Inativo'" tooltipPosition="top"><a style="color: inherit; text-decoration: none" href="#">{{pessoas.ativo ? 'Ativo' : 'Inativo'}}</a></td>
+                  <td class="text-center">
                       <button pButton icon="pi pi-pencil" pTooltip="Editar" tooltipPosition="top"></button>
                       <button pButton icon="pi pi-trash" pTooltip="Excluir" tooltipPosition="top" style="margin-left:5px"></button>
                   </td>
