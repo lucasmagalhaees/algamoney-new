@@ -1,3 +1,4 @@
+import { PessoaService } from './pessoas/pessoa.service';
 import { LancamentoService } from './lancamentos/lancamento.service';
 import { BreadcrumbComponent } from './utils/breadcrumb/breadcrumb.component';
 import { ModMessageComponent } from './utils/mod-message/mod-message.component';
@@ -31,7 +32,6 @@ import {InputMaskModule} from 'primeng/components/inputmask/inputmask';
 import { CurrencyMaskModule } from 'ng2-currency-mask';
 import { ValidacaoFormComponent } from './utils/validacao-form/validacao-form.component';
 import { MessageComponent } from './utils/message/message.component';
-import { PessoaGridComponent } from './pessoas/pessoa-grid/pessoa-grid.component';
 import { ModToastComponent } from './utils/mod-toast/mod-toast.component';
 import {MessagesModule} from 'primeng/messages';
 import {MessageModule} from 'primeng/message';
@@ -51,7 +51,6 @@ import {PanelMenuModule} from 'primeng/panelmenu';
     PessoaCadastroComponent,
     ValidacaoFormComponent,
     MessageComponent,
-    PessoaGridComponent,
     ModToastComponent,
     ModMessageComponent,
     BreadcrumbComponent
@@ -78,7 +77,9 @@ import {PanelMenuModule} from 'primeng/panelmenu';
     ],
   providers: [
     MessageService,
-    LancamentoService],
+    LancamentoService,
+    PessoaService
+],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

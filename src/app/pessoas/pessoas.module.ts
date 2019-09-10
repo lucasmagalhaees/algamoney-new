@@ -6,7 +6,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PessoasPesquisaComponent } from './pessoas-pesquisa/pessoas-pesquisa.component';
 import { PessoaCadastroComponent } from './pessoa-cadastro/pessoa-cadastro.component';
-import { PessoaGridComponent } from './pessoa-grid/pessoa-grid.component';
 import { MessagesModule} from 'primeng/primeng';
 import {MessageModule} from 'primeng/message';
 
@@ -23,7 +22,6 @@ import {MessageModule} from 'primeng/message';
   declarations: [
     PessoasPesquisaComponent,
     PessoaCadastroComponent,
-    PessoaGridComponent,
     ModToastComponent,
     ModMessageComponent
   ],
