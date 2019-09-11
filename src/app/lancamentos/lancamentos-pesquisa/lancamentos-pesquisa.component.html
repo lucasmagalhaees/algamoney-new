@@ -60,13 +60,11 @@
                       <td class="text-center">{{lancamentos.dataPagamento | date: 'dd/MM/yyyy' }}</td>
                       <td class="text-center" [style.color]="lancamentos.tipo === 'DESPESA' ? 'red' : 'blue'">{{lancamentos.valor | number:'1.2-2'}}</td>
                       <td class="text-center">
-                        <ng-template let-lanc>
-                        </ng-template>
                           <button pButton icon="pi pi-pencil"
                           pTooltip="Editar"  tooltipPosition="top"></button>
                           <button pButton icon="pi pi-trash"
                           pTooltip="Excluir" tooltipPosition="top"
-                          (click)="excluir(lanc)"
+                          (click)="excluir(lancamentos)"
                           style="margin-left:5px"></button>
                       </td>
                     </tr>
