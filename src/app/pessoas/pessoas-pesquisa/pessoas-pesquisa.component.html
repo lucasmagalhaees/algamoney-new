@@ -28,7 +28,7 @@
 <div class="ui-g">
   <div class="ui-g-12">
 
-      <p-table [value]="pessoas" [paginator]="true"
+      <p-table #pesquisaPessoas [value]="pessoas" [paginator]="true"
       [rows]="filtro.itensPorPagina" [totalRecords]="totalRegistros"
       (onLazyLoad)="aoMudarPagina($event)" [lazy]="true"
        [responsive]="true">
@@ -49,7 +49,9 @@
                   <td class="text-center" [pTooltip] = "pessoas.ativo === 'Ativo' ? 'Tornar Ativo' : 'Tornar Inativo'" tooltipPosition="top"><a style="color: inherit; text-decoration: none" href="#">{{pessoas.ativo ? 'Ativo' : 'Inativo'}}</a></td>
                   <td class="text-center">
                       <button pButton icon="pi pi-pencil" pTooltip="Editar" tooltipPosition="top"></button>
-                      <button pButton icon="pi pi-trash" pTooltip="Excluir" tooltipPosition="top" style="margin-left:5px"></button>
+                      <button pButton icon="pi pi-trash" pTooltip="Excluir"
+                      (click)="confirmarExclusao(pessoas)"
+                      tooltipPosition="top" style="margin-left:5px"></button>
                   </td>
                 </tr>
           </ng-template>

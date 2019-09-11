@@ -1,6 +1,8 @@
 import { PessoaService, PessoaFiltro } from './../pessoa.service';
-import { Component, OnInit } from '@angular/core';
-import { LazyLoadEvent } from 'primeng/components/common/api';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { LazyLoadEvent, ConfirmationService } from 'primeng/components/common/api';
+import { ToastyService } from 'ng2-toasty';
+
 
 
 @Component({
@@ -14,7 +16,13 @@ export class PessoasPesquisaComponent {
   filtro = new PessoaFiltro();
   pessoas = [];
 
-  constructor(private pessoaService: PessoaService) {}
+  @ViewChild('pesquisaPessoas', {static: true}) grid;
+
+
+  constructor(private pessoaService: PessoaService,
+              private toasty: ToastyService,
+              private confirmation: ConfirmationService,
+    ) {}
 
   aoMudarPagina(event: LazyLoadEvent) {
     const pagina = event.first / event.rows;
@@ -30,6 +38,31 @@ export class PessoasPesquisaComponent {
           this.pessoas = resultado.pessoas;
         });
   }
+
+  excluir(pessoa: any) {
+    this.pessoaService.excluir(pessoa.codigo)
+    .then(() => {
+      this.grid.reset();
+
+      this.toasty.success('Pessoa deletada com sucesso');
+    });
+  }
+
+  confirmarExclusao(pessoa: any) {
+
+    this.confirmation.confirm({
+        message: `<b>Nome:</b> ${pessoa.nome}
+         <br> <b>Cidade:</b> ${pessoa.endereco.cidade}
+         <br> <b>Estado:</b> ${pessoa.endereco.estado}
+         <br> <b>Status:</b> ${pessoa.ativo}`,
+                header: 'Tem certeza que deseja excluir o lançamento?',
+        accept: () => {
+            this.excluir(pessoa);
+        }
+    });
+
+
+}
 
 
 }

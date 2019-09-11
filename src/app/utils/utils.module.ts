@@ -10,6 +10,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { ModToastComponent } from './mod-toast/mod-toast.component';
 import { ModMessageComponent } from './mod-message/mod-message.component';
 import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
+import { ErrorHandlerService } from './error-handler.service';
 
 
 
@@ -40,7 +41,8 @@ import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
 
   ],
   providers: [
-    MessageService
+    MessageService,
+    ErrorHandlerService
   ]
 })
 export class UtilsModule { }

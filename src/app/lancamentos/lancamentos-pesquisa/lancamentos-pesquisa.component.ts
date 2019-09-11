@@ -3,6 +3,7 @@ import { LancamentoService, LancamentoFiltro } from './../lancamento.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { LazyLoadEvent, ConfirmationService } from 'primeng/components/common/api';
 import { ToastyService } from 'ng2-toasty';
+import { ErrorHandlerService } from 'src/app/utils/error-handler.service';
 
 
 @Component({
@@ -16,7 +17,7 @@ export class LancamentosPesquisaComponent {
   filtro = new LancamentoFiltro();
    lancamentos = [];
 
-   @ViewChild('tabela', {static: true}) grid;
+   @ViewChild('pesquisaLanc', {static: true}) grid;
 
 
 
@@ -26,9 +27,10 @@ export class LancamentosPesquisaComponent {
 
   constructor(
     private toasty: ToastyService,
-    private decimalPipe: DecimalPipe,
-    private datePipe: DatePipe,
     private confirmation: ConfirmationService,
+    private decimalPipe: DecimalPipe,
+    private errorHandler: ErrorHandlerService,
+    private datePipe: DatePipe,
     private lancamentoService: LancamentoService) {}
 
 
@@ -46,7 +48,9 @@ export class LancamentosPesquisaComponent {
       .then( resultado => {
         this.totalRegistros = resultado.total;
         this.lancamentos = resultado.lancamentos;
-      });
+      })
+      .catch(erro => this.errorHandler.handle(erro));
+
   }
 
   excluir(lancamento: any){
