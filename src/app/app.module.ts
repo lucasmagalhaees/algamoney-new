@@ -1,10 +1,12 @@
-import { NgModule, Component } from '@angular/core';
+import { NgModule, Component, LOCALE_ID} from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { DecimalPipe, DatePipe } from '@angular/common';
+import { registerLocaleData } from '@angular/common';
+import localePt from '@angular/common/locales/pt';
 
 
 import { MessageService, ConfirmationService } from 'primeng/api';
@@ -40,6 +42,7 @@ import { MessageComponent } from './utils/message/message.component';
 import { ModToastComponent } from './utils/mod-toast/mod-toast.component';
 import { ConfirmDialogModule } from 'primeng/components/confirmdialog/confirmdialog';
 
+registerLocaleData(localePt);
 
 
 @NgModule({
@@ -86,7 +89,9 @@ import { ConfirmDialogModule } from 'primeng/components/confirmdialog/confirmdia
     PessoaService,
     ConfirmationService,
     DecimalPipe,
-    DatePipe
+    DatePipe,
+  { provide: LOCALE_ID, useValue: 'pt-BR' }
+
 ],
   bootstrap: [AppComponent]
 })

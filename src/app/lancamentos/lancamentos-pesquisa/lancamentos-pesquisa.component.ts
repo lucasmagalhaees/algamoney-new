@@ -61,15 +61,14 @@ export class LancamentosPesquisaComponent {
   confirmarExclusao(lancamento: any) {
     let valorFormatado = this.decimalPipe.transform(lancamento.valor, "1.2-2");
     let vencimentoFormatado = this.datePipe.transform(lancamento.dataVencimento, 'dd/MM/yyyy');
+    // tslint:disable-next-line: max-line-length
     let pagamentoFormatado = this.datePipe.transform(lancamento.dataPagamento, 'dd/MM/yyyy');
-
 
     this.confirmation.confirm({
         message: `<b>Lançamento:</b> ${lancamento.descricao}
          <br> <b>Pessoa:</b> ${lancamento.pessoa}
          <br> <b>Vencimento:</b> ${vencimentoFormatado}
-         <br> <b>Pagamento:</b> ${pagamentoFormatado}
-         <br> <b>Vencimento:</b> ${valorFormatado}`,
+         <br> <b>Valor:</b> R$ ${valorFormatado}`,
                 header: 'Tem certeza que deseja excluir o lançamento?',
         accept: () => {
             this.excluir(lancamento);
