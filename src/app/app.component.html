@@ -6,3 +6,11 @@
 <!-- <app-pessoa-cadastro></app-pessoa-cadastro> -->
 <!-- <app-pessoas-pesquisa></app-pessoas-pesquisa> -->
 
+<ng2-toasty [position]="'top-left'"></ng2-toasty>
+<p-confirmDialog #cd>
+  <p-footer>
+    <button type="button" class="ui-button-danger" pButton icon="pi pi-check" label="Confirmar exclusão" (click)="cd.accept()"></button>
+    <button type="button" class="ui-button-secondary" pButton  icon="pi pi-times" label="Cancelar" (click)="cd.reject()"></button>
+</p-footer>
+
+</p-confirmDialog>

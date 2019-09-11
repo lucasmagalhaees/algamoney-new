@@ -37,10 +37,10 @@
           [rows]="filtro.itensPorPagina" [totalRecords]="totalRegistros"
           (onLazyLoad)="aoMudarPagina($event)" [lazy]="true" [responsive]="true">
             <ng-template pTemplate="emptymessage">
-           <p class="text-center py-2 w-100 d-block px-5 font-weight-bold display-5 text-nowrap">
+           <!-- <p class="text-center py-2 w-100 d-block px-5 font-weight-bold display-5 text-nowrap">
 
              Nenhum lançamento encontrado
-           </p>
+           </p> -->
           </ng-template>
             <ng-template pTemplate="header">
                 <tr>
@@ -64,7 +64,7 @@
                           pTooltip="Editar"  tooltipPosition="top"></button>
                           <button pButton icon="pi pi-trash"
                           pTooltip="Excluir" tooltipPosition="top"
-                          (click)="excluir(lancamentos)"
+                          (click)="confirmarExclusao(lancamentos)"
                           style="margin-left:5px"></button>
                       </td>
                     </tr>

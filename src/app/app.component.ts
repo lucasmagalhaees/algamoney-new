@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { trigger, state, style, transition, animate} from '@angular/animations';
 import { NgForm } from '@angular/forms';
+import { ToastyConfig } from 'ng2-toasty';
 
 
 
@@ -22,6 +23,10 @@ import { NgForm } from '@angular/forms';
   ]
 })
 export class AppComponent {
+
+  constructor(private toastyConfig: ToastyConfig) {
+    this.toastyConfig.theme = 'bootstrap';
+  }
 
   menuState: string = 'out';
   adicionaEvento(menuState) {

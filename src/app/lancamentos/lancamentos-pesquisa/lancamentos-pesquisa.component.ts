@@ -1,6 +1,8 @@
+import { DecimalPipe, DatePipe } from '@angular/common';
 import { LancamentoService, LancamentoFiltro } from './../lancamento.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { LazyLoadEvent } from 'primeng/components/common/api';
+import { LazyLoadEvent, ConfirmationService } from 'primeng/components/common/api';
+import { ToastyService } from 'ng2-toasty';
 
 
 @Component({
@@ -22,7 +24,14 @@ export class LancamentosPesquisaComponent {
   ngOnInit() {
   }
 
-  constructor(private lancamentoService: LancamentoService) {}
+  constructor(
+    private toasty: ToastyService,
+    private decimalPipe: DecimalPipe,
+    private datePipe: DatePipe,
+    private confirmation: ConfirmationService,
+    private lancamentoService: LancamentoService) {}
+
+
 
   aoMudarPagina(event: LazyLoadEvent) {
     const pagina = event.first / event.rows;
@@ -40,10 +49,33 @@ export class LancamentosPesquisaComponent {
       });
   }
 
-  excluir(lancamento: any) {
+  excluir(lancamento: any){
     this.lancamentoService.excluir(lancamento.codigo)
-      .then(() => {
-        this.grid.reset();
-      });
+    .then(() => {
+      this.grid.reset();
+
+      this.toasty.success('Lançamento deletado com sucesso');
+    });
+  }
+
+  confirmarExclusao(lancamento: any) {
+    let valorFormatado = this.decimalPipe.transform(lancamento.valor, "1.2-2");
+    let vencimentoFormatado = this.datePipe.transform(lancamento.dataVencimento, 'dd/MM/yyyy');
+    let pagamentoFormatado = this.datePipe.transform(lancamento.dataPagamento, 'dd/MM/yyyy');
+
+
+    this.confirmation.confirm({
+        message: `<b>Lançamento:</b> ${lancamento.descricao}
+         <br> <b>Pessoa:</b> ${lancamento.pessoa}
+         <br> <b>Vencimento:</b> ${vencimentoFormatado}
+         <br> <b>Pagamento:</b> ${pagamentoFormatado}
+         <br> <b>Vencimento:</b> ${valorFormatado}`,
+                header: 'Tem certeza que deseja excluir o lançamento?',
+        accept: () => {
+            this.excluir(lancamento);
+        }
+    });
+
+
 }
 }
