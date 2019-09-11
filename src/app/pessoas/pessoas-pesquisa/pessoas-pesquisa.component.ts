@@ -2,6 +2,7 @@ import { PessoaService, PessoaFiltro } from './../pessoa.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { LazyLoadEvent, ConfirmationService } from 'primeng/components/common/api';
 import { ToastyService } from 'ng2-toasty';
+import { ErrorHandlerService } from 'src/app/utils/error-handler.service';
 
 
 
@@ -22,6 +23,7 @@ export class PessoasPesquisaComponent {
   constructor(private pessoaService: PessoaService,
               private toasty: ToastyService,
               private confirmation: ConfirmationService,
+              private errorHandler: ErrorHandlerService,
     ) {}
 
   aoMudarPagina(event: LazyLoadEvent) {
@@ -36,7 +38,9 @@ export class PessoasPesquisaComponent {
       .then(resultado => {
           this.totalRegistros = resultado.total;
           this.pessoas = resultado.pessoas;
-        });
+        })
+        .catch(erro => this.errorHandler.handle(erro));
+
   }
 
   excluir(pessoa: any) {
@@ -45,7 +49,9 @@ export class PessoasPesquisaComponent {
       this.grid.reset();
 
       this.toasty.success('Pessoa deletada com sucesso');
-    });
+    })
+    .catch(erro => this.errorHandler.handle(erro));
+
   }
 
   confirmarExclusao(pessoa: any) {

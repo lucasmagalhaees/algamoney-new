@@ -59,7 +59,9 @@ export class LancamentosPesquisaComponent {
       this.grid.reset();
 
       this.toasty.success('Lançamento deletado com sucesso');
-    });
+    })
+    .catch(erro => this.errorHandler.handle(erro));
+
   }
 
   confirmarExclusao(lancamento: any) {
