@@ -60,10 +60,10 @@ export class PessoaService {
   }
 
   mudarStatus(codigo: number, ativo: boolean): Promise<void> {
-    const headers = new Headers();
-    headers.append('Authorization', 'Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg==');
-    headers.append('Content-Type', 'application/json');
-    return this.httpClient.put(`${this.pessoasUrl}/${codigo}/ativo`, { headers })
+    const headers = new HttpHeaders()
+      .append('Authorization', 'Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg==')
+      .append('Content-Type', 'application/json');
+    return this.httpClient.put(`${this.pessoasUrl}/${codigo}/ativo`, ativo, { headers })
     .toPromise()
     .then(() => null);
   }

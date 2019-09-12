@@ -71,9 +71,8 @@ export class PessoasPesquisaComponent {
     this.confirmation.confirm({
         message: `<b>Nome:</b> ${pessoa.nome}
          <br> <b>Cidade:</b> ${pessoa.endereco.cidade}
-         <br> <b>Estado:</b> ${pessoa.endereco.estado}
-         <br> <b>Status:</b> ${pessoa.ativo}`,
-                header: 'Tem certeza que deseja excluir o lançamento?',
+         <br> <b>Estado:</b> ${pessoa.endereco.estado}`,
+                header: 'Tem certeza que deseja excluir a pessoa?',
         accept: () => {
             this.excluir(pessoa);
         }
