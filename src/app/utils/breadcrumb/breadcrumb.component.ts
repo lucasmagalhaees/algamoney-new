@@ -22,7 +22,7 @@ import { Component, OnInit, Input } from '@angular/core';
     position: fixed;
     left: 0;
     right: 0;
-    z-index: 9998;
+    z-index: 999;
     height: 72px;
     color: white;
     margin-top:70px;

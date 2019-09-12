@@ -9,7 +9,7 @@ import { MessageService } from 'primeng/api';
   `,
   styles: [
     `
-    z-index: 9999
+    z-index: 9999;
   `
 ]
 })
@@ -39,6 +39,7 @@ export class ModToastComponent implements OnInit {
          severity: 'error',
          summary: this.error == "required" ? "Campo obrigatório" : "Tamanho insuficiente",
           detail: this.text,
+          life: 8000,
       });
     });
   }
