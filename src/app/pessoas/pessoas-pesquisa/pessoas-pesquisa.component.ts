@@ -58,9 +58,9 @@ export class PessoasPesquisaComponent {
     const novoStatus = !pessoa.ativo;
     this.pessoaService.mudarStatus(pessoa.codigo, novoStatus)
     .then(() => {
-      const acao = novoStatus ? 'ativada' : 'desativada';
+      const acao = novoStatus ? 'ativado' : 'desativado';
       pessoa.ativo = novoStatus;
-      this.toasty.success(`Pessoa ${acao} com sucesso!`);
+      this.toasty.success(`Status de ${pessoa.nome} ${acao} com sucesso!`);
 
     })
     .catch(erro => this.errorHandler.handle(erro));

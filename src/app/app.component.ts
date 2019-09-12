@@ -26,6 +26,7 @@ export class AppComponent {
 
   constructor(private toastyConfig: ToastyConfig) {
     this.toastyConfig.theme = 'bootstrap';
+    this.toastyConfig.timeout = 8000;
   }
 
   menuState: string = 'out';
