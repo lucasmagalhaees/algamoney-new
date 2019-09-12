@@ -15,8 +15,8 @@
 
         <div class="ui-sm-12 ui-g-6 ui-lg-3 ui-fluid">
           <label>Vencimento</label>
-          <p-calendar dateFormat="dd/mm/yy" #vencimento="ngModel" [(ngModel)]="lancamento.dataVencimento" name="vencimento" [inline]="false" [readonlyInput]="false" [showIcon]="true"></p-calendar>
-          <app-message [control]="vencimento" error="required" text="Informe uma data de vencimento"></app-message>
+          <p-calendar required dateFormat="dd/mm/yy" #vencimento="ngModel" [(ngModel)]="lancamento.dataVencimento" name="vencimento" [inline]="false" [readonlyInput]="false" [showIcon]="true"></p-calendar>
+          <app-mod-toast [control]="vencimento" error="required" text="Informe uma data de vencimento"></app-mod-toast>
         </div>
         <div class="ui-sm-12 ui-g-6 ui-lg-3 mr-auto ui-fluid">
           <label>{{ tipo.value === 'RECEITA' ? 'Recebimento' : 'Pagamento'}}</label>
