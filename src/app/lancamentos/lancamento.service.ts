@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 import 'rxjs/add/operator/toPromise';
 import * as moment from 'moment';
+import { Lancamento } from '../utils/model';
 
 
 export class LancamentoFiltro {
@@ -68,6 +69,16 @@ excluir(codigo: number): Promise<void> {
   return this.httpClient.delete(`${this.lancamentosUrl}/${codigo}`, {headers})
   .toPromise()
   .then(() => null);
+}
+
+adicionar(lancamento: Lancamento): Promise<Lancamento> {
+  const headers = new HttpHeaders()
+  .append('Authorization', 'Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg==')
+  .append('Content-Type', 'application/json');
+
+  return this.httpClient.post(`${this.lancamentosUrl}`, lancamento, { headers })
+    .toPromise()
+    .then(response => response['content']);
 }
 
 

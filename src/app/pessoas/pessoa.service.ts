@@ -48,7 +48,7 @@ export class PessoaService {
     const headers = new HttpHeaders().append('Authorization', 'Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg==');
     return this.httpClient.get(this.pessoasUrl, {headers})
       .toPromise()
-      .then(response => response);
+      .then(response => response['content']);
   }
 
   excluir(codigo: number): Promise<void> {
