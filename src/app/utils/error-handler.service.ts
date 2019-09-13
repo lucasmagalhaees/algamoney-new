@@ -23,7 +23,7 @@ export class ErrorHandlerService {
       msg = 'Ocorreu um erro ao processar a sua solicitação';
 
       try {
-        errors = errorResponse;
+        errors = errorResponse.error;
 
         msg = errors[0].mensagemUsuario;
       } catch (e) { }

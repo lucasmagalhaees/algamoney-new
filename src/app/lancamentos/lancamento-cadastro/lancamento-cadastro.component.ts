@@ -43,6 +43,7 @@ export class LancamentoCadastroComponent implements OnInit {
         this.categorias = categorias.map(c => {
           return { label: c.nome, value: c.codigo };
         });
+        this.lancamento.categoria = categorias[0];
     })
     .catch(erro => this.errorHandler.handle(erro));
   }
@@ -53,6 +54,7 @@ export class LancamentoCadastroComponent implements OnInit {
         this.pessoas = pessoas.map(c => {
           return { label: c.nome, value: c.codigo };
         });
+        this.lancamento.pessoa = pessoas[0];
     })
     .catch(erro => this.errorHandler.handle(erro));
   }
