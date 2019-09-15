@@ -58,7 +58,7 @@ export class LancamentosPesquisaComponent {
     .then(() => {
       this.grid.reset();
 
-      this.toasty.success('Lançamento deletado com sucesso');
+      this.toasty.success(`Lançamento ${lancamento.descricao} deletado com sucesso`);
     })
     .catch(erro => this.errorHandler.handle(erro));
 

@@ -48,7 +48,7 @@ export class PessoasPesquisaComponent {
     .then(() => {
       this.grid.reset();
 
-      this.toasty.success('Pessoa deletada com sucesso');
+      this.toasty.success(`Pessoa ${pessoa.nome} com sucesso`);
     })
     .catch(erro => this.errorHandler.handle(erro));
 
