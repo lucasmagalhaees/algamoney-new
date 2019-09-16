@@ -42,6 +42,7 @@ export class LancamentoAtualizacaoComponent implements OnInit {
       return this.lancamentoService.buscarPorCodigo(codigo)
       .then(lancamento => {
         this.lancamento = lancamento;
+        console.log(lancamento);
       })
       .catch(erro => this.errorHandler.handle(erro));
     }
@@ -52,7 +53,6 @@ export class LancamentoAtualizacaoComponent implements OnInit {
           this.pessoas = pessoas.map(c => {
             return { label: c.nome, value: c.codigo };
           });
-          this.lancamento.pessoa = pessoas[0];
       })
       .catch(erro => this.errorHandler.handle(erro));
     }
@@ -62,7 +62,6 @@ export class LancamentoAtualizacaoComponent implements OnInit {
           this.categorias = categorias.map(c => {
             return { label: c.nome, value: c.codigo };
           });
-          this.lancamento.categoria = categorias[0];
       })
       .catch(erro => this.errorHandler.handle(erro));
     }
