@@ -6,6 +6,7 @@ import { ErrorHandlerService } from 'src/app/utils/error-handler.service';
 import { CategoriasService } from './../../categorias/categorias.service';
 import { ToastyService } from 'ng2-toasty';
 import { ActivatedRoute } from '@angular/router';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-lancamento-atualizacao',
@@ -64,6 +65,16 @@ export class LancamentoAtualizacaoComponent implements OnInit {
           });
       })
       .catch(erro => this.errorHandler.handle(erro));
+    }
+
+    atualizarLancamento(form: FormControl) {
+      this.lancamentoService.atualizar(this.lancamento)
+        .then(lancamento => {
+          this.lancamento = lancamento;
+
+          this.toasty.success(`Lançamento alterado com sucesso!`);
+        })
+        .catch(erro => this.errorHandler.handle(erro));
     }
 
    }
