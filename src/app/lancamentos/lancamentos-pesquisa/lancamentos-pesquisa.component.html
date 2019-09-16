@@ -61,7 +61,8 @@
                       <td class="text-center" [style.color]="lancamentos.tipo === 'DESPESA' ? 'red' : 'blue'">{{lancamentos.valor | number:'1.2-2'}}</td>
                       <td class="text-center">
                           <button pButton icon="pi pi-pencil"
-                          pTooltip="Editar"  tooltipPosition="top"></button>
+                          [routerLink]="['/lancamentos', lancamentos.codigo]"
+                          pTooltip="Editar" tooltipPosition="top"></button>
                           <button pButton icon="pi pi-trash"
                           pTooltip="Excluir" tooltipPosition="top"
                           (click)="confirmarExclusao(lancamentos)"

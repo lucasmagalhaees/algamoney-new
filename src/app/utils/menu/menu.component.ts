@@ -25,15 +25,16 @@ export class MenuComponent {
               label: 'Lançamentos',
               icon: 'pi pi-fw pi-dollar',
               items: [
+                  // tslint:disable-next-line: max-line-length
+                  {label: 'Pesquisar Lançamentos', icon: 'pi pi-fw pi-search', routerLink: '/lancamentos'},
                   {label: 'Novo Lançamento', icon: 'pi pi-fw pi-plus', routerLink: '/lancamentos/novo'},
-                  {label: 'Pesquisar Lançamentos', icon: 'pi pi-fw pi-search', routerLink: '/lancamentos'}
               ]
           }, {
             label: 'Pessoas',
             icon: 'pi pi-fw pi-users',
             items: [
-                {label: 'Nova Pessoa', icon: 'pi pi-fw pi-plus', routerLink: '/pessoas/novo'},
-                {label: 'Pesquisar Pessoas', icon: 'pi pi-fw pi-search', routerLink: '/pessoas'}
+              {label: 'Pesquisar Pessoas', icon: 'pi pi-fw pi-search', routerLink: '/pessoas'},
+                {label: 'Nova Pessoa', icon: 'pi pi-fw pi-user-plus', routerLink: '/pessoas/novo'},
             ]
         },
      ];

@@ -6,6 +6,8 @@ import { ErrorHandlerService } from 'src/app/utils/error-handler.service';
 import { CategoriasService } from './../../categorias/categorias.service';
 import { Component, OnInit } from '@angular/core';
 import { ToastyService } from 'ng2-toasty';
+import { ActivatedRoute } from '@angular/router';
+
 
 @Component({
   selector: 'app-lancamento-cadastro',
@@ -29,11 +31,14 @@ export class LancamentoCadastroComponent implements OnInit {
     private categoriaService: CategoriasService,
     private errorHandler: ErrorHandlerService,
     private pessoaService: PessoaService,
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit() {
     this.carregarCategorias();
     this.carregarPessoas();
+    console.log(this.route.snapshot.params['codigo']);
+
   }
 
 
