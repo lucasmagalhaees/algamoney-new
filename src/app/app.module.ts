@@ -28,6 +28,7 @@ import {MessageModule} from 'primeng/message';
 import {PanelMenuModule} from 'primeng/panelmenu';
 import {ToastyModule} from 'ng2-toasty';
 
+import { LancamentoAtualizacaoComponent } from './lancamentos/lancamento-atualizacao/lancamento-atualizacao.component';
 import { LancamentoService } from './lancamentos/lancamento.service';
 import { BreadcrumbComponent } from './utils/breadcrumb/breadcrumb.component';
 import { ModMessageComponent } from './utils/mod-message/mod-message.component';
@@ -49,8 +50,8 @@ registerLocaleData(localePt);
 
 const routes: Routes = [
   { path: '', redirectTo: 'lancamentos', pathMatch: 'full'},
+  { path: 'lancamentos/atualiza/:codigo', component: LancamentoAtualizacaoComponent },
   { path: 'lancamentos', component: LancamentosPesquisaComponent },
-  { path: 'lancamentos/:codigo', component: LancamentoCadastroComponent },
   { path: 'lancamentos/novo', component: LancamentoCadastroComponent },
   { path: 'pessoas', component: PessoasPesquisaComponent },
   { path: 'pessoas/:codigo', component: PessoaCadastroComponent },
@@ -66,6 +67,7 @@ const routes: Routes = [
     MenuComponent,
     PessoasPesquisaComponent,
     LancamentoCadastroComponent,
+    LancamentoAtualizacaoComponent,
     PessoaCadastroComponent,
     ValidacaoFormComponent,
     MessageComponent,

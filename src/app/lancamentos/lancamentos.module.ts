@@ -20,7 +20,8 @@ import { LancamentoAtualizacaoComponent } from './lancamento-atualizacao/lancame
   ],
   exports: [
     LancamentoCadastroComponent,
-    LancamentosPesquisaComponent
+    LancamentosPesquisaComponent,
+    LancamentoAtualizacaoComponent
   ]
 
 })
