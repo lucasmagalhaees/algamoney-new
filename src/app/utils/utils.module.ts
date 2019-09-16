@@ -1,3 +1,4 @@
+import { RouterModule } from '@angular/router';
 import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
 import { ValidacaoFormComponent } from './validacao-form/validacao-form.component';
@@ -17,7 +18,8 @@ import { ErrorHandlerService } from './error-handler.service';
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    RouterModule
   ],
   declarations: [
     MenuComponent,

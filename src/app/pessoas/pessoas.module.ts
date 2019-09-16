@@ -1,3 +1,4 @@
+import { RouterLink } from '@angular/router';
 import { ModMessageComponent } from './../utils/mod-message/mod-message.component';
 import { ModToastComponent } from './../utils/mod-toast/mod-toast.component';
 import { ToastModule } from 'primeng/toast';
@@ -17,7 +18,8 @@ import {MessageModule} from 'primeng/message';
     FormsModule,
     ToastModule,
     MessagesModule,
-    MessageModule
+    MessageModule,
+    RouterLink
   ],
   declarations: [
     PessoasPesquisaComponent,

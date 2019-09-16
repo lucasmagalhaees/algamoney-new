@@ -7,6 +7,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { DecimalPipe, DatePipe } from '@angular/common';
 import { registerLocaleData } from '@angular/common';
 import localePt from '@angular/common/locales/pt';
+import { Routes, RouterModule } from '@angular/router';
+
 
 
 import { MessageService, ConfirmationService } from 'primeng/api';
@@ -45,6 +47,13 @@ import { ConfirmDialogModule } from 'primeng/components/confirmdialog/confirmdia
 registerLocaleData(localePt);
 
 
+const routes: Routes = [
+  { path: 'lancamentos', component: LancamentosPesquisaComponent },
+  { path: 'lancamentos/novo', component: LancamentoCadastroComponent },
+  { path: 'pessoas', component: PessoasPesquisaComponent },
+  { path: 'pessoas/novo', component: PessoaCadastroComponent }
+];
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -81,7 +90,9 @@ registerLocaleData(localePt);
     PanelMenuModule,
     HttpClientModule,
     ConfirmDialogModule,
-    ToastyModule.forRoot()
+    ToastyModule.forRoot(),
+    RouterModule.forRoot(routes),
+
     ],
   providers: [
     MessageService,
