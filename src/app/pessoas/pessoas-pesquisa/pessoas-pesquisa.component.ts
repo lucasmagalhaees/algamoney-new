@@ -1,3 +1,4 @@
+import { FormControl } from '@angular/forms';
 import { PessoaService, PessoaFiltro } from './../pessoa.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { LazyLoadEvent, ConfirmationService } from 'primeng/components/common/api';
@@ -25,6 +26,10 @@ export class PessoasPesquisaComponent {
               private confirmation: ConfirmationService,
               private errorHandler: ErrorHandlerService,
     ) {}
+
+  reset(form:FormControl){
+    form.reset();
+  }
 
   aoMudarPagina(event: LazyLoadEvent) {
     const pagina = event.first / event.rows;

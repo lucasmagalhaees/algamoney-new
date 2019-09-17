@@ -4,7 +4,7 @@
 
   <div id="card-general">
 
-    <form autocomplete="off" (ngSubmit)="pesquisar()">
+    <form #pessoaPesquisa="ngForm" autocomplete="off" (ngSubmit)="pesquisar()">
 
     <div class="ui-g">
 
@@ -18,6 +18,8 @@
 
   <div class="ui-g-12">
     <button pButton type="submit" label="Pesquisar"></button>
+    <button (click)="reset(pessoaPesquisa)" type="submit" class="ui-button-raised ui-button-info text-weight-bold text-white ml-2" pButton label="Limpar filtro"></button>
+
 
   </div>
 
