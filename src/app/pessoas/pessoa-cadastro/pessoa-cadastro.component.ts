@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { FormControl } from '@angular/forms';
 import { PessoaService } from './../../pessoas/pessoa.service';
 import {Lancamento, Pessoa} from './../../utils/model';
@@ -18,9 +19,9 @@ export class PessoaCadastroComponent {
 
   constructor(
     private toasty: ToastyService,
-    private categoriaService: CategoriasService,
     private errorHandler: ErrorHandlerService,
     private pessoaService: PessoaService,
+    private router: Router
   ) { }
 
   pessoa = new Pessoa();
@@ -30,8 +31,10 @@ export class PessoaCadastroComponent {
       .then(() => {
         this.toasty.success(`Pessoa ${this.pessoa.nome} adicionada com sucesso!`);
 
-        form.reset();
-        this.pessoa = new Pessoa();
+        // form.reset();
+        // this.pessoa = new Pessoa();
+        this.router.navigate(['/pessoas']);
+
       })
       .catch(erro => this.errorHandler.handle(erro));
   }

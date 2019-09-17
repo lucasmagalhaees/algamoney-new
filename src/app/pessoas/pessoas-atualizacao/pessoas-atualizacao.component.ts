@@ -1,4 +1,3 @@
-import { ActivatedRoute } from '@angular/router';
 import { FormControl } from '@angular/forms';
 import { PessoaService } from './../../pessoas/pessoa.service';
 import {Lancamento, Pessoa} from './../../utils/model';
@@ -6,6 +5,7 @@ import { ErrorHandlerService } from 'src/app/utils/error-handler.service';
 import { CategoriasService } from './../../categorias/categorias.service';
 import { Component, OnInit } from '@angular/core';
 import { ToastyService } from 'ng2-toasty';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-pessoas-atualizacao',
@@ -19,7 +19,8 @@ export class PessoasAtualizacaoComponent implements OnInit {
     private categoriaService: CategoriasService,
     private errorHandler: ErrorHandlerService,
     private pessoaService: PessoaService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router,
   ) { }
 
   pessoa = new Pessoa();
@@ -46,6 +47,10 @@ export class PessoasAtualizacaoComponent implements OnInit {
         this.toasty.success(`Pessoa alterada com sucesso!`);
       })
       .catch(erro => this.errorHandler.handle(erro));
+  }
+
+  novo(form: FormControl){
+    this.router.navigate(['pessoas/novo']);
   }
 
 }

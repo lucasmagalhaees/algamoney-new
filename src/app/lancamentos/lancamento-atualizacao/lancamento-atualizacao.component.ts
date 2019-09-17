@@ -5,7 +5,7 @@ import {Lancamento} from './../../utils/model';
 import { ErrorHandlerService } from 'src/app/utils/error-handler.service';
 import { CategoriasService } from './../../categorias/categorias.service';
 import { ToastyService } from 'ng2-toasty';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { FormControl } from '@angular/forms';
 
 @Component({
@@ -37,7 +37,10 @@ export class LancamentoAtualizacaoComponent implements OnInit {
     private categoriaService: CategoriasService,
     private errorHandler: ErrorHandlerService,
     private pessoaService: PessoaService,
-    private route: ActivatedRoute){}
+    private route: ActivatedRoute,
+    private router: Router,
+    )
+    {}
 
     carregarLancamentos(codigo:number) {
       return this.lancamentoService.buscarPorCodigo(codigo)
@@ -73,8 +76,13 @@ export class LancamentoAtualizacaoComponent implements OnInit {
           this.lancamento = lancamento;
 
           this.toasty.success(`Lançamento alterado com sucesso!`);
+
         })
         .catch(erro => this.errorHandler.handle(erro));
+    }
+
+    novo(form: FormControl){
+      this.router.navigate(['lancamentos/novo']);
     }
 
    }
