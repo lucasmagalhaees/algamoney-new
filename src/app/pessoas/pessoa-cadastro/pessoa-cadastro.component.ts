@@ -38,6 +38,11 @@ export class PessoaCadastroComponent {
       })
       .catch(erro => this.errorHandler.handle(erro));
   }
+
+  reset(form: FormControl) {
+      form.reset();
+      this.pessoa = new Pessoa();
+  }
   // console.log(this.pessoa);
   // }
 

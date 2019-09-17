@@ -85,6 +85,11 @@ export class LancamentoCadastroComponent implements OnInit {
       })
       .catch(erro => this.errorHandler.handle(erro));
   }
+
+  reset(form: FormControl){
+    form.reset();
+    this.lancamento = new Lancamento();
+  }
   // console.log(this.lancamento);
   // }
 

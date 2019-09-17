@@ -16,7 +16,7 @@
         <div class="ui-sm-12 ui-g-6 ui-lg-3 ui-fluid">
           <label>Vencimento</label>
           <p-calendar required dateFormat="dd/mm/yy" #vencimento="ngModel" [(ngModel)]="lancamento.dataVencimento" name="vencimento" [inline]="false" [readonlyInput]="false" [showIcon]="true"></p-calendar>
-          <app-mod-toast [control]="vencimento" error="required" text="Informe uma data de vencimento"></app-mod-toast>
+          <app-message [control]="vencimento" error="required" text="Informe uma data de vencimento"></app-message>
         </div>
         <div class="ui-sm-12 ui-g-6 ui-lg-3 mr-auto ui-fluid">
           <label>{{ tipo.value === 'RECEITA' ? 'Recebimento' : 'Pagamento'}}</label>
@@ -53,6 +53,7 @@
 
     <div class="ui-g-12">
       <button type="submit" [disabled]="!lancamentoCadastro.valid" class="ui-button-raised text-weight-bold" pButton label="Salvar"></button>
+      <button (click)="reset(lancamentoCadastro)" type="button" class="ui-button-raised ui-button-info text-weight-bold text-white ml-2" pButton label="Limpar campos"></button>
       <button routerLink="/lancamentos" type="button" pButton pTooltip="Voltar para a pesquisa" tooltipPosition="right" class="ml-2 ui-button-raised ui-button-secondary" outcome="productDetail" icon="pi pi-search"> </button>
 
 

@@ -1,3 +1,4 @@
+import { FormControl } from '@angular/forms';
 import { DecimalPipe, DatePipe } from '@angular/common';
 import { LancamentoService, LancamentoFiltro } from './../lancamento.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
@@ -34,6 +35,9 @@ export class LancamentosPesquisaComponent {
     private lancamentoService: LancamentoService) {}
 
 
+    reset(form: FormControl){
+      form.reset();
+    }
 
   aoMudarPagina(event: LazyLoadEvent) {
     const pagina = event.first / event.rows;

@@ -6,7 +6,7 @@
 
     <div class="ui-g">
 
-      <form autocomplete="off" (ngSubmit)="pesquisar()">
+      <form #lancamentoPesquisa="ngForm" autocomplete="off" (ngSubmit)="pesquisar()">
 
       <div class="ui-g-12 ui-fluid">
         <label>Descrição</label>
@@ -24,6 +24,8 @@
 
       <div class="ui-g-12">
         <button pButton type="submit" label="Pesquisar"></button>
+        <button (click)="reset(lancamentoPesquisa)" type="submit" class="ui-button-raised ui-button-info text-weight-bold text-white ml-2" pButton label="Limpar filtro"></button>
+
 
       </div>
 
