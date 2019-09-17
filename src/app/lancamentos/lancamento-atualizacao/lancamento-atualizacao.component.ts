@@ -74,6 +74,7 @@ export class LancamentoAtualizacaoComponent implements OnInit {
     }
 
     atualizarLancamento(form: FormControl) {
+      const lancamentoCopia = this.lancamento;
       this.lancamentoService.atualizar(this.lancamento)
         .then(lancamento => {
           this.lancamento = lancamento;
