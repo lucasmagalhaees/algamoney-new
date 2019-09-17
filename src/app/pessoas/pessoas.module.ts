@@ -9,6 +9,7 @@ import { PessoasPesquisaComponent } from './pessoas-pesquisa/pessoas-pesquisa.co
 import { PessoaCadastroComponent } from './pessoa-cadastro/pessoa-cadastro.component';
 import { MessagesModule} from 'primeng/primeng';
 import {MessageModule} from 'primeng/message';
+import { PessoasAtualizacaoComponent } from './pessoas-atualizacao/pessoas-atualizacao.component';
 
 
 
@@ -25,11 +26,13 @@ import {MessageModule} from 'primeng/message';
     PessoasPesquisaComponent,
     PessoaCadastroComponent,
     ModToastComponent,
-    ModMessageComponent
+    ModMessageComponent,
+    PessoasAtualizacaoComponent
   ],
   exports: [
     PessoasPesquisaComponent,
-    PessoaCadastroComponent
+    PessoaCadastroComponent,
+    PessoasAtualizacaoComponent
   ]
 
 })

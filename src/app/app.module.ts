@@ -1,3 +1,4 @@
+import { PessoasAtualizacaoComponent } from './pessoas/pessoas-atualizacao/pessoas-atualizacao.component';
 import { NgModule, Component, LOCALE_ID} from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
@@ -54,6 +55,7 @@ const routes: Routes = [
   { path: 'lancamentos', component: LancamentosPesquisaComponent },
   { path: 'lancamentos/novo', component: LancamentoCadastroComponent },
   { path: 'pessoas', component: PessoasPesquisaComponent },
+  { path: 'pessoas/atualiza/:codigo', component: PessoasAtualizacaoComponent },
   { path: 'pessoas/:codigo', component: PessoaCadastroComponent },
   { path: 'pessoas/novo', component: PessoaCadastroComponent }
 ];
@@ -73,7 +75,8 @@ const routes: Routes = [
     MessageComponent,
     ModToastComponent,
     ModMessageComponent,
-    BreadcrumbComponent
+    BreadcrumbComponent,
+    PessoasAtualizacaoComponent
   ],
   imports: [
     BrowserModule,

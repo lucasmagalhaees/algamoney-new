@@ -1,11 +1,11 @@
-<app-breadcrumb text="Nova Pessoa"></app-breadcrumb>
+<app-breadcrumb text="Atualizar Pessoa"></app-breadcrumb>
 
 <div class="container">
 
   <div id="card-general">
 
 
-    <form #pessoaForm="ngForm" (ngSubmit)="salvar(pessoaForm)">
+    <form #pessoaAtualiza="ngForm" (ngSubmit)="atualizarPessoa(pessoaAtualiza)">
 
     <div class="ui-g">
 
@@ -41,6 +41,7 @@
         <label>Complemento</label>
         <input type="text" #complemento="ngModel" name="complemento" [(ngModel)]="pessoa.endereco.complemento" pInputText/>
 
+
       </div>
       <div class="ui-g-4 ui-sm-12 ui-fluid">
         <label>Bairro</label>
@@ -72,7 +73,7 @@
 
 
       <div class="ui-g-12 form-buttons">
-        <button type="submit" [disabled]="!pessoaForm.valid" class="ui-button-raised text-weight-bold" pButton label="Salvar"></button>
+        <button type="submit" [disabled]="!pessoaAtualiza.valid" class="ui-button-raised text-weight-bold" pButton label="Salvar"></button>
         <button type="button" class="ui-button-raised ui-button-info text-weight-bold text-white ml-2" pButton label="Novo"></button>
         <button routerLink="/pessoas" type="button" pButton pTooltip="Voltar para a pesquisa" tooltipPosition="right" class="ml-2 ui-button-raised ui-button-secondary" outcome="productDetail" icon="pi pi-search">
         </button>
