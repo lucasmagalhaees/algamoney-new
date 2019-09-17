@@ -1,3 +1,4 @@
+import { Title } from '@angular/platform-browser';
 import { LancamentoService } from './../lancamento.service';
 import { FormControl } from '@angular/forms';
 import { PessoaService } from './../../pessoas/pessoa.service';
@@ -33,6 +34,7 @@ export class LancamentoCadastroComponent implements OnInit {
     private pessoaService: PessoaService,
     private route: ActivatedRoute,
     private router: Router,
+    private title: Title
   ) { }
 
   ngOnInit() {
@@ -40,6 +42,7 @@ export class LancamentoCadastroComponent implements OnInit {
 
     this.carregarCategorias();
     this.carregarPessoas();
+    this.title.setTitle("Novo Lançamento");
 
   }
 

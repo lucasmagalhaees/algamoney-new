@@ -6,6 +6,7 @@ import { CategoriasService } from './../../categorias/categorias.service';
 import { Component, OnInit } from '@angular/core';
 import { ToastyService } from 'ng2-toasty';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-pessoas-atualizacao',
@@ -21,11 +22,13 @@ export class PessoasAtualizacaoComponent implements OnInit {
     private pessoaService: PessoaService,
     private route: ActivatedRoute,
     private router: Router,
+    private title: Title
   ) { }
 
   pessoa = new Pessoa();
 
   ngOnInit() {
+    this.title.setTitle("Atualizar Pessoa");
     const codigoPessoa =this.route.snapshot.params['codigo'];
     this.carregarPessoas(codigoPessoa);
   }

@@ -4,6 +4,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { LazyLoadEvent, ConfirmationService } from 'primeng/components/common/api';
 import { ToastyService } from 'ng2-toasty';
 import { ErrorHandlerService } from 'src/app/utils/error-handler.service';
+import { Title } from '@angular/platform-browser';
 
 
 
@@ -12,7 +13,11 @@ import { ErrorHandlerService } from 'src/app/utils/error-handler.service';
   templateUrl: './pessoas-pesquisa.component.html',
   styleUrls: ['./pessoas-pesquisa.component.css']
 })
-export class PessoasPesquisaComponent {
+export class PessoasPesquisaComponent implements OnInit {
+
+  ngOnInit(){
+    this.title.setTitle('Pequisar Pessoas');
+  }
 
   totalRegistros = 0;
   filtro = new PessoaFiltro();
@@ -25,6 +30,7 @@ export class PessoasPesquisaComponent {
               private toasty: ToastyService,
               private confirmation: ConfirmationService,
               private errorHandler: ErrorHandlerService,
+              private title: Title
     ) {}
 
   reset(form:FormControl){

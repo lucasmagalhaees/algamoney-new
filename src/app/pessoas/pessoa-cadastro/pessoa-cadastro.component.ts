@@ -1,3 +1,4 @@
+import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { FormControl } from '@angular/forms';
 import { PessoaService } from './../../pessoas/pessoa.service';
@@ -15,13 +16,18 @@ import { ToastyService } from 'ng2-toasty';
 })
 
 
-export class PessoaCadastroComponent {
+export class PessoaCadastroComponent implements OnInit {
+
+  ngOnInit(){
+    this.title.setTitle("Nova Pessoa");
+  }
 
   constructor(
     private toasty: ToastyService,
     private errorHandler: ErrorHandlerService,
     private pessoaService: PessoaService,
-    private router: Router
+    private router: Router,
+    private title: Title
   ) { }
 
   pessoa = new Pessoa();

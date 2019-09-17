@@ -1,3 +1,4 @@
+import { Title } from '@angular/platform-browser';
 import { FormControl } from '@angular/forms';
 import { DecimalPipe, DatePipe } from '@angular/common';
 import { LancamentoService, LancamentoFiltro } from './../lancamento.service';
@@ -24,6 +25,7 @@ export class LancamentosPesquisaComponent {
 
   // tslint:disable-next-line: use-lifecycle-interface
   ngOnInit() {
+    this.title.setTitle("Pesquisar Lançamentos");
   }
 
   constructor(
@@ -32,7 +34,9 @@ export class LancamentosPesquisaComponent {
     private decimalPipe: DecimalPipe,
     private errorHandler: ErrorHandlerService,
     private datePipe: DatePipe,
-    private lancamentoService: LancamentoService) {}
+    private lancamentoService: LancamentoService,
+    private title: Title
+    ) {}
 
 
     reset(form: FormControl){

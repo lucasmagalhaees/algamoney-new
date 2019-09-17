@@ -1,3 +1,4 @@
+import { Title } from '@angular/platform-browser';
 import { Component, OnInit } from '@angular/core';
 import { LancamentoService } from './../lancamento.service';
 import { PessoaService } from './../../pessoas/pessoa.service';
@@ -28,6 +29,7 @@ export class LancamentoAtualizacaoComponent implements OnInit {
     this.carregarLancamentos(codigoLancamento);
     this.carregarCategorias();
     this.carregarPessoas();
+    this.title.setTitle("Atualizar Lançamento");
 
   }
 
@@ -39,6 +41,7 @@ export class LancamentoAtualizacaoComponent implements OnInit {
     private pessoaService: PessoaService,
     private route: ActivatedRoute,
     private router: Router,
+    private title: Title
     )
     {}
 
