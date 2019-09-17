@@ -3,6 +3,7 @@ body{
   color: #404C51;
   margin: 0;
   background: #e8e7e6;
+  /* background: #24344c !important; */
 }
 
 
@@ -11,7 +12,6 @@ body{
   width: 1120px;
   margin: 0 auto;
   padding-bottom: 140px;
-  /* border: 2px solid red; */
 }
 
 #card-general{

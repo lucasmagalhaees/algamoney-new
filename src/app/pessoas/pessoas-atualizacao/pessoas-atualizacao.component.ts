@@ -45,6 +45,8 @@ export class PessoasAtualizacaoComponent implements OnInit {
         this.pessoa = pessoa;
 
         this.toasty.success(`Pessoa alterada com sucesso!`);
+        this.router.navigate(['/pessoas']);
+
       })
       .catch(erro => this.errorHandler.handle(erro));
   }

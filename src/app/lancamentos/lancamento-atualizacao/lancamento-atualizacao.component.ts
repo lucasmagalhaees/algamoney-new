@@ -76,6 +76,8 @@ export class LancamentoAtualizacaoComponent implements OnInit {
           this.lancamento = lancamento;
 
           this.toasty.success(`Lançamento alterado com sucesso!`);
+          this.router.navigate(['/lancamentos']);
+
 
         })
         .catch(erro => this.errorHandler.handle(erro));

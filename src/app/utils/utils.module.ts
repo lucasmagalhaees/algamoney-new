@@ -1,3 +1,4 @@
+import { PaginaNaoEncontradaComponent } from './pagina-nao-encontrada/pagina-nao-encontrada.component';
 import { RouterModule } from '@angular/router';
 import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
@@ -30,7 +31,9 @@ import { ErrorHandlerService } from './error-handler.service';
     ModToastComponent,
     ToastModule,
     ModMessageComponent,
-    BreadcrumbComponent
+    BreadcrumbComponent,
+    PaginaNaoEncontradaComponent
+
 
   ],
   exports: [
@@ -39,6 +42,7 @@ import { ErrorHandlerService } from './error-handler.service';
   NavbarComponent,
   SidebarComponent,
   ValidacaoFormComponent,
+  PaginaNaoEncontradaComponent
 
 
   ],

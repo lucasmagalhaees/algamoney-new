@@ -1,3 +1,4 @@
+import { PaginaNaoEncontradaComponent } from './utils/pagina-nao-encontrada/pagina-nao-encontrada.component';
 import { PessoasAtualizacaoComponent } from './pessoas/pessoas-atualizacao/pessoas-atualizacao.component';
 import { NgModule, Component, LOCALE_ID} from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
@@ -57,7 +58,9 @@ const routes: Routes = [
   { path: 'pessoas', component: PessoasPesquisaComponent },
   { path: 'pessoas/atualiza/:codigo', component: PessoasAtualizacaoComponent },
   { path: 'pessoas/:codigo', component: PessoaCadastroComponent },
-  { path: 'pessoas/novo', component: PessoaCadastroComponent }
+  { path: 'pessoas/novo', component: PessoaCadastroComponent },
+  { path: 'page-not-found', component: PaginaNaoEncontradaComponent },
+  { path: '**', redirectTo: 'page-not-found' }
 ];
 
 @NgModule({
@@ -76,7 +79,8 @@ const routes: Routes = [
     ModToastComponent,
     ModMessageComponent,
     BreadcrumbComponent,
-    PessoasAtualizacaoComponent
+    PessoasAtualizacaoComponent,
+    PaginaNaoEncontradaComponent
   ],
   imports: [
     BrowserModule,
