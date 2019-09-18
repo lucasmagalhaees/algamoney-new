@@ -16,6 +16,7 @@ import { FormControl } from '@angular/forms';
 })
 export class LancamentoAtualizacaoComponent implements OnInit {
   categorias = [];
+  campos = [];
   pessoas = [];
   tipos = [
     { label: 'Receita', value: 'RECEITA' },
@@ -77,15 +78,46 @@ export class LancamentoAtualizacaoComponent implements OnInit {
       const lancamentoCopia = this.lancamento;
       this.lancamentoService.atualizar(this.lancamento)
         .then(lancamento => {
+          this.validarAlteracoes(lancamentoCopia);
           this.lancamento = lancamento;
+          // this.toasty.success(`Lançamento alterado com sucesso!`);
 
-          this.toasty.success(`Lançamento alterado com sucesso!`);
+
           this.router.navigate(['/lancamentos']);
 
 
         })
         .catch(erro => this.errorHandler.handle(erro));
     }
+
+    validarAlteracoes(lancamentoCopia: Lancamento) {
+      let campos: string[] = new Array();
+
+
+      if (this.lancamento.descricao !== lancamentoCopia.descricao) {
+          campos.push('descricao');
+      }
+      if (this.lancamento.dataPagamento !== lancamentoCopia.dataPagamento) {
+          campos.push('dataPagamento');
+      }
+
+      if (this.lancamento.dataVencimento !== lancamentoCopia.dataVencimento) {
+          campos.push('dataVencimento');
+      }
+      if (this.lancamento.pessoa !== lancamentoCopia.pessoa) {
+          campos.push('pessoa');
+      }
+      if (this.lancamento.categoria !== lancamentoCopia.categoria) {
+          campos.push('categoria');
+      }
+      if (this.lancamento.valor !== lancamentoCopia.valor) {
+          campos.push('valor');
+      }
+
+      //...
+      // console.log(campos);
+      this.toasty.success(`Os campos ${campos.join(',')} foram alterados e o lançamento ${this.lancamento.descricao} foi atualizado com sucesso.`);
+  }
 
     novo(form: FormControl){
       this.router.navigate(['lancamentos/novo']);

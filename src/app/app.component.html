@@ -1,4 +1,4 @@
- <app-navbar (eventoNavbar)="adicionaEvento($event)"></app-navbar>
+ <app-navbar [hidden]="escondeNavbar()"  *ngIf="exibindoNavbar()" (eventoNavbar)="adicionaEvento($event)"></app-navbar>
 <app-menu [@slideInOut]="menuState" (eventoNavbar)="adicionaEvento($event)"></app-menu>
 
 <router-outlet></router-outlet>

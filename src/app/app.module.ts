@@ -1,3 +1,4 @@
+import { LoginFormComponent } from './seguranca/login-form/login-form.component';
 import { PaginaNaoEncontradaComponent } from './utils/pagina-nao-encontrada/pagina-nao-encontrada.component';
 import { PessoasAtualizacaoComponent } from './pessoas/pessoas-atualizacao/pessoas-atualizacao.component';
 import { NgModule, Component, LOCALE_ID} from '@angular/core';
@@ -70,7 +71,8 @@ registerLocaleData(localePt);
     ModMessageComponent,
     BreadcrumbComponent,
     PessoasAtualizacaoComponent,
-    PaginaNaoEncontradaComponent
+    PaginaNaoEncontradaComponent,
+    LoginFormComponent
   ],
   imports: [
     BrowserModule,

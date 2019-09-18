@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component } from '@angular/core';
 import { trigger, state, style, transition, animate} from '@angular/animations';
 import { NgForm } from '@angular/forms';
@@ -24,7 +25,9 @@ import { ToastyConfig } from 'ng2-toasty';
 })
 export class AppComponent {
 
-  constructor(private toastyConfig: ToastyConfig) {
+  constructor(
+    private toastyConfig: ToastyConfig,
+    private router:Router) {
     this.toastyConfig.theme = 'bootstrap';
     this.toastyConfig.timeout = 8000;
   }
@@ -34,6 +37,16 @@ export class AppComponent {
     this.menuState = this.menuState === 'out' ? 'in' : 'out';
 
   }
+
+  exibindoNavbar(){
+    return this.router.url !== '/login';
+  }
+  escondeNavbar(){
+    return this.router.url === '/page-not-found';
+  }
+
+
+
 
 
 }

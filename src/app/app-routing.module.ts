@@ -1,3 +1,4 @@
+import { LoginFormComponent } from './seguranca/login-form/login-form.component';
 import { NgModule } from '@angular/core';
 import { PaginaNaoEncontradaComponent } from './utils/pagina-nao-encontrada/pagina-nao-encontrada.component';
 import { PessoaCadastroComponent } from './pessoas/pessoa-cadastro/pessoa-cadastro.component';
@@ -11,8 +12,8 @@ import { Routes, RouterModule } from '@angular/router';
 
 
 const routes: Routes = [
-  { path: '', redirectTo: 'lancamentos', pathMatch: 'full'},
-  { path: '', redirectTo: 'lancamentos', pathMatch: 'full'},
+  { path: '', redirectTo: 'login', pathMatch: 'full'},
+  { path: 'login', component: LoginFormComponent },
   { path: 'lancamentos/atualiza/:codigo', component: LancamentoAtualizacaoComponent },
   { path: 'lancamentos', component: LancamentosPesquisaComponent },
   { path: 'lancamentos/novo', component: LancamentoCadastroComponent },
