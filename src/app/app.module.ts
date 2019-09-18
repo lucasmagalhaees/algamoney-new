@@ -46,22 +46,12 @@ import { ValidacaoFormComponent } from './utils/validacao-form/validacao-form.co
 import { MessageComponent } from './utils/message/message.component';
 import { ModToastComponent } from './utils/mod-toast/mod-toast.component';
 import { ConfirmDialogModule } from 'primeng/components/confirmdialog/confirmdialog';
+import { AppRoutingModule } from './app-routing.module';
 
 registerLocaleData(localePt);
 
 
-const routes: Routes = [
-  { path: '', redirectTo: 'lancamentos', pathMatch: 'full'},
-  { path: 'lancamentos/atualiza/:codigo', component: LancamentoAtualizacaoComponent },
-  { path: 'lancamentos', component: LancamentosPesquisaComponent },
-  { path: 'lancamentos/novo', component: LancamentoCadastroComponent },
-  { path: 'pessoas', component: PessoasPesquisaComponent },
-  { path: 'pessoas/atualiza/:codigo', component: PessoasAtualizacaoComponent },
-  { path: 'pessoas/:codigo', component: PessoaCadastroComponent },
-  { path: 'pessoas/novo', component: PessoaCadastroComponent },
-  { path: 'page-not-found', component: PaginaNaoEncontradaComponent },
-  { path: '**', redirectTo: 'page-not-found' }
-];
+
 
 @NgModule({
   declarations: [
@@ -103,8 +93,8 @@ const routes: Routes = [
     HttpClientModule,
     ConfirmDialogModule,
     ToastyModule.forRoot(),
-    RouterModule.forRoot(routes),
-
+    RouterModule,
+    AppRoutingModule
     ],
   providers: [
     MessageService,
