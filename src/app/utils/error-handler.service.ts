@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ToastyService } from 'ng2-toasty';
 import { HttpErrorResponse } from '@angular/common/http';
+import { Router, RouterModule, ActivatedRoute } from '@angular/router';
 
 
 
@@ -9,7 +10,10 @@ import { HttpErrorResponse } from '@angular/common/http';
 })
 export class ErrorHandlerService {
 
-  constructor(private toasty: ToastyService) { }
+  constructor(
+    private toasty: ToastyService,
+    private router: Router
+    ) { }
 
   handle(errorResponse: any) {
     let msg: string;
@@ -19,6 +23,10 @@ export class ErrorHandlerService {
 
     } else if (errorResponse instanceof HttpErrorResponse
         && errorResponse.status >= 400 && errorResponse.status <= 499) {
+          if (errorResponse.status == 404) {
+            this.router.navigate(['/page-not-found']);
+            return;
+        }
       let errors;
       msg = 'Ocorreu um erro ao processar a sua solicitação';
 
