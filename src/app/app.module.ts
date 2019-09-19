@@ -1,3 +1,7 @@
+export function tokenGetter(): string {
+  return localStorage.getItem('token');
+}
+
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { JwtModule } from "@auth0/angular-jwt";
 import { AuthService } from './seguranca/auth.service';
@@ -102,11 +106,11 @@ registerLocaleData(localePt);
     AppRoutingModule,
     JwtModule.forRoot({
       config: {
-        tokenGetter: () => {
-          return '';
-        }
+        tokenGetter: tokenGetter,
+        whitelistedDomains: ['https://alga-basic.herokuapp.com'],
+        blacklistedRoutes: ['https://alga-basic.herokuapp.com/oauth/token']
       }
-  })
+    })
     ],
   providers: [
     MessageService,

@@ -2,7 +2,6 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/toPromise';
-import { access } from 'fs';
 
 
 @Injectable({
@@ -18,7 +17,9 @@ export class AuthService {
     private http: HttpClient,
     private jwt: JwtHelperService
 
-  ) { }
+  ) {
+    this.carregarToken();
+  }
 
   login(usuario: string, senha: string): Promise<void>{
     const headers = new HttpHeaders()
@@ -30,14 +31,29 @@ export class AuthService {
     .toPromise()
     .then(response => {
       console.log(response);
-      this.armazenarToken(response);
+      this.armazenarToken(response['access_token']);
     })
     .catch(response => {
-      console.log(response);
-    });
+      const responseError = response.error;
+      if (response.status === 400) {
+        if (responseError.error === 'invalid_grant') {
+          return Promise.reject('Usuário ou senha inválida');
+        }
+      }
+      return Promise.reject(response);
+  });
   }
 
   private armazenarToken(token: string){
     this.jwtPayload = this.jwt.decodeToken(token);
+    localStorage.setItem('token', token);
+  }
+
+  private carregarToken(){
+    const token = localStorage.getItem('token');
+
+    if(token){
+      this.armazenarToken(token);
+    }
   }
 }
