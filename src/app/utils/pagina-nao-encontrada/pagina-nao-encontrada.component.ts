@@ -12,4 +12,5 @@ export class PaginaNaoEncontradaComponent implements OnInit {
   ngOnInit() {
   }
 
+
 }
