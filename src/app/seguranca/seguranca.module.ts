@@ -1,6 +1,10 @@
+import { AuthService } from './auth.service';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LoginFormComponent } from './login-form/login-form.component';
+import {JwtHelperService} from '@auth0/angular-jwt';
+import { JwtModule } from "@auth0/angular-jwt";
+
 
 
 
@@ -8,6 +12,11 @@ import { LoginFormComponent } from './login-form/login-form.component';
   declarations: [LoginFormComponent],
   imports: [
     CommonModule
+  ],
+  providers: [
+    AuthService,
+    JwtHelperService
+
   ]
 })
 export class SegurancaModule { }

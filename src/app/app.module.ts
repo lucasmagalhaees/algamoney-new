@@ -1,3 +1,6 @@
+import { JwtHelperService } from '@auth0/angular-jwt';
+import { JwtModule } from "@auth0/angular-jwt";
+import { AuthService } from './seguranca/auth.service';
 import { LoginFormComponent } from './seguranca/login-form/login-form.component';
 import { PaginaNaoEncontradaComponent } from './utils/pagina-nao-encontrada/pagina-nao-encontrada.component';
 import { PessoasAtualizacaoComponent } from './pessoas/pessoas-atualizacao/pessoas-atualizacao.component';
@@ -96,7 +99,14 @@ registerLocaleData(localePt);
     ConfirmDialogModule,
     ToastyModule.forRoot(),
     RouterModule,
-    AppRoutingModule
+    AppRoutingModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: () => {
+          return '';
+        }
+      }
+  })
     ],
   providers: [
     MessageService,
@@ -105,6 +115,9 @@ registerLocaleData(localePt);
     ConfirmationService,
     DecimalPipe,
     DatePipe,
+    AuthService,
+    JwtHelperService,
+
   { provide: LOCALE_ID, useValue: 'pt-BR' }
 
 ],
