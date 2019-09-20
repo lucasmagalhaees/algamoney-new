@@ -1,3 +1,4 @@
+import { FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ErrorHandlerService } from 'src/app/utils/error-handler.service';
 import { AuthService } from './../auth.service';
@@ -23,6 +24,13 @@ export class LoginFormComponent {
       this.errorHandler.handle(erro);
     })
 
- }
 
+
+  }
+
+    reset(form:FormControl){
+      form.reset();
+    }
 }
+
+

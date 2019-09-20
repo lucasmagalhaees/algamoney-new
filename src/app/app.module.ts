@@ -107,7 +107,7 @@ registerLocaleData(localePt);
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,
-        whitelistedDomains: ['https://alga-basic.herokuapp.com'],
+        whitelistedDomains: ['alga-basic.herokuapp.com'],
         blacklistedRoutes: ['https://alga-basic.herokuapp.com/oauth/token']
       }
     })
