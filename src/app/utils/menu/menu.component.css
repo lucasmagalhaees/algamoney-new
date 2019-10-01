@@ -24,8 +24,8 @@
 }
 
 .sidebar{
-  background-color: #3a3633;
-  opacity: 0.8;
+  background-color: rgba(58, 54, 51, 0.8);
+  /* opacity: 0.8; */
   position: fixed;
   top: 0;
   bottom: 0;

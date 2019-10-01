@@ -47,6 +47,8 @@ export class LancamentoAtualizacaoComponent implements OnInit {
     {}
 
     carregarLancamentos(codigo:number) {
+      const lancamentoCopia = Object.assign({}, this.lancamento);
+
       return this.lancamentoService.buscarPorCodigo(codigo)
       .then(lancamento => {
         this.lancamento = lancamento;
@@ -75,12 +77,11 @@ export class LancamentoAtualizacaoComponent implements OnInit {
     }
 
     atualizarLancamento(form: FormControl) {
-      const lancamentoCopia = this.lancamento;
       this.lancamentoService.atualizar(this.lancamento)
         .then(lancamento => {
-          this.validarAlteracoes(lancamentoCopia);
+          // this.validarAlteracoes(lancamentoCopia);
           this.lancamento = lancamento;
-          // this.toasty.success(`Lançamento alterado com sucesso!`);
+          this.toasty.success(`Lançamento alterado com sucesso!`);
 
 
           this.router.navigate(['/lancamentos']);

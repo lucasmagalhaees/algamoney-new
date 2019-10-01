@@ -1,3 +1,4 @@
+import { AuthService } from './../../seguranca/auth.service';
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import {MenuItem} from 'primeng/api';
 import { RouterLink } from '@angular/router';
@@ -9,6 +10,10 @@ import { RouterLink } from '@angular/router';
   styleUrls: ['./menu.component.css']
 })
 export class MenuComponent {
+
+  constructor (private auth: AuthService){
+
+  }
   @Output() eventoNavbar = new EventEmitter();
 
   items: MenuItem[];
