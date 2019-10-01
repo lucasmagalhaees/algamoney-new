@@ -4,12 +4,17 @@ import {MenuItem} from 'primeng/api';
 import { RouterLink } from '@angular/router';
 
 
+
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
   styleUrls: ['./menu.component.css']
 })
+
+
 export class MenuComponent {
+
+
 
   constructor (private auth: AuthService){
 
@@ -24,23 +29,42 @@ export class MenuComponent {
     this.eventoNavbar.emit(this.menuState);
   }
   ''
+
+
   ngOnInit() {
+    const lancamentoItems = [
+      {label: 'Pesquisar Lançamentos', icon: 'pi pi-fw pi-search', routerLink: '/lancamentos'},
+      //..aqui os itens de lançamento independentes de permissão
+    ];
+    const pessoaItems = [
+      {label: 'Pesquisar Pessoas', icon: 'pi pi-fw pi-search', routerLink: '/pessoas'},
+    ];
+
+    if (this.auth.temPermissao('ROLE_CADASTRAR_LANCAMENTO')) {
+      lancamentoItems.push({
+        label: 'Novo Lançamento',
+        icon: 'pi pi-fw pi-plus',
+        routerLink: '/lancamentos/novo'
+      });
+    }
+    if (this.auth.temPermissao('ROLE_CADASTRAR_PESSOA')) {
+      pessoaItems.push({
+        label: 'Nova Pessoa',
+        icon: 'pi pi-fw pi-plus',
+        routerLink: '/pessoas/novo'
+      });
+    }
+
+
       this.items = [
           {
               label: 'Lançamentos',
               icon: 'pi pi-fw pi-dollar',
-              items: [
-                  // tslint:disable-next-line: max-line-length
-                  {label: 'Pesquisar Lançamentos', icon: 'pi pi-fw pi-search', routerLink: '/lancamentos'},
-                  {label: 'Novo Lançamento', icon: 'pi pi-fw pi-plus', routerLink: '/lancamentos/novo'},
-              ]
+              items: lancamentoItems
           }, {
             label: 'Pessoas',
             icon: 'pi pi-fw pi-users',
-            items: [
-              {label: 'Pesquisar Pessoas', icon: 'pi pi-fw pi-search', routerLink: '/pessoas'},
-                {label: 'Nova Pessoa', icon: 'pi pi-fw pi-user-plus', routerLink: '/pessoas/novo'},
-            ]
+            items: pessoaItems
         },
      ];
   }
