@@ -15,6 +15,8 @@ export class LoginFormComponent {
     private errorHandler: ErrorHandlerService,
     private router: Router) { }
 
+    senhaInput: string;
+
  login(usuario: string, senha: string){
    this.auth.login(usuario, senha)
    .then(() => {
@@ -22,6 +24,7 @@ export class LoginFormComponent {
    })
     .catch(erro => {
       this.errorHandler.handle(erro);
+      this.senhaInput = '';
     })
 
 
