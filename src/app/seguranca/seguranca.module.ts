@@ -15,7 +15,13 @@ import { JwtModule } from "@auth0/angular-jwt";
   ],
   providers: [
     AuthService,
-    JwtHelperService
+    JwtHelperService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: MoneyHttpInterceptor,
+      multi: true
+  }
+
 
   ]
 })
