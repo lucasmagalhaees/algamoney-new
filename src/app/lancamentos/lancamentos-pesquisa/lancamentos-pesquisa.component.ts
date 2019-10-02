@@ -1,3 +1,4 @@
+import { AuthService } from './../../seguranca/auth.service';
 import { Title } from '@angular/platform-browser';
 import { FormControl } from '@angular/forms';
 import { DecimalPipe, DatePipe } from '@angular/common';
@@ -35,7 +36,8 @@ export class LancamentosPesquisaComponent {
     private errorHandler: ErrorHandlerService,
     private datePipe: DatePipe,
     private lancamentoService: LancamentoService,
-    private title: Title
+    private title: Title,
+    private auth: AuthService
     ) {}
 
 

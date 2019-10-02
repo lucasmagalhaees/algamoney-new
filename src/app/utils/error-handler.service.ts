@@ -27,6 +27,10 @@ export class ErrorHandlerService {
             this.router.navigate(['/page-not-found']);
             return;
         }
+
+        if(errorResponse.status === 403) {
+          msg = 'Você não tem permissão para executar essa ação';
+        }
       let errors;
       msg = 'Ocorreu um erro ao processar a sua solicitação';
 

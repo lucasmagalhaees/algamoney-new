@@ -62,10 +62,10 @@
                       <td class="text-center">{{lancamentos.dataPagamento | date: 'dd/MM/yyyy' }}</td>
                       <td class="text-center" [style.color]="lancamentos.tipo === 'DESPESA' ? 'red' : 'blue'">{{lancamentos.valor | number:'1.2-2'}}</td>
                       <td class="text-center">
-                          <button pButton icon="pi pi-pencil"
+                          <button [disabled]="!this.auth.temPermissao('ROLE_CADASTRAR_LANCAMENTO')" pButton icon="pi pi-pencil"
                           [routerLink]="['/lancamentos/atualiza', lancamentos.codigo]"
                           pTooltip="Editar" tooltipPosition="top"></button>
-                          <button pButton icon="pi pi-trash"
+                          <button [disabled]="!this.auth.temPermissao('ROLE_CADASTRAR_LANCAMENTO')" pButton icon="pi pi-trash"
                           pTooltip="Excluir" tooltipPosition="top"
                           (click)="confirmarExclusao(lancamentos)"
                           style="margin-left:5px"></button>

@@ -8,6 +8,7 @@ import { CategoriasService } from './../../categorias/categorias.service';
 import { ToastyService } from 'ng2-toasty';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormControl } from '@angular/forms';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-lancamento-atualizacao',
@@ -23,6 +24,8 @@ export class LancamentoAtualizacaoComponent implements OnInit {
     { label: 'Despesa', value: 'DESPESA' }
   ];
   lancamento = new Lancamento();
+  lancamentoCopia = new Lancamento();
+
 
 
   ngOnInit() {
@@ -50,6 +53,7 @@ export class LancamentoAtualizacaoComponent implements OnInit {
 
       return this.lancamentoService.buscarPorCodigo(codigo)
       .then(lancamento => {
+        this.lancamentoCopia = Object.assign({}, lancamento);
             this.lancamento = lancamento;
            })
       .catch(erro => this.errorHandler.handle(erro));
@@ -77,10 +81,9 @@ export class LancamentoAtualizacaoComponent implements OnInit {
     atualizarLancamento(form: FormControl) {
       this.lancamentoService.atualizar(this.lancamento)
         .then(lancamento => {
-          const lancamentoCopia = Object.assign({}, this.lancamento);
-          this.validarAlteracoes(lancamentoCopia);
+          this.validarAlteracoes(lancamento);
           this.lancamento = lancamento;
-          this.toasty.success(`Lançamento alterado com sucesso!`);
+          // this.toasty.success(`Lançamento alterado com sucesso!`);
 
 
           this.router.navigate(['/lancamentos']);
@@ -90,30 +93,31 @@ export class LancamentoAtualizacaoComponent implements OnInit {
         .catch(erro => this.errorHandler.handle(erro));
     }
 
-    validarAlteracoes(lancamentoCopia: Lancamento) {
+    validarAlteracoes(lancamento: Lancamento) {
       let campos: string[] = new Array();
 
-
-      if (this.lancamento.descricao !== lancamentoCopia.descricao) {
-          campos.push('descricao');
+      if (lancamento.descricao !== this.lancamentoCopia.descricao) {
+          campos.push('Descricao');
       }
-      if (this.lancamento.dataPagamento !== lancamentoCopia.dataPagamento) {
-          campos.push('dataPagamento');
-      }
-
-      if (this.lancamento.dataVencimento !== lancamentoCopia.dataVencimento) {
-          campos.push('dataVencimento');
-      }
-      if (this.lancamento.pessoa !== lancamentoCopia.pessoa) {
-          campos.push('pessoa');
-      }
-      if (this.lancamento.categoria !== lancamentoCopia.categoria) {
-          campos.push('categoria');
-      }
-      if (this.lancamento.valor !== lancamentoCopia.valor) {
-          campos.push('valor');
+      if (moment(lancamento.dataPagamento).format('dd/MM/yyyy') !== moment(this.lancamentoCopia.dataPagamento).format('dd/MM/yyyy')) {
+          campos.push('Data Pagamento');
       }
 
+      if (moment(lancamento.dataVencimento).format('dd/MM/yyyy') !== moment(this.lancamentoCopia.dataVencimento).format('dd/MM/yyyy')) {
+          campos.push('Data Vencimento');
+      }
+      if (lancamento.pessoa.codigo !== this.lancamentoCopia.pessoa.codigo) {
+          campos.push('Pessoa');
+      }
+      if (lancamento.categoria.codigo !== this.lancamentoCopia.categoria.codigo) {
+          campos.push('Categoria');
+      }
+      if (lancamento.valor !== this.lancamentoCopia.valor) {
+          campos.push('Valor');
+      }
+      if (lancamento.observacao !== this.lancamentoCopia.observacao) {
+        campos.push('Observacao');
+      }
       //...
       // console.log(campos);
       this.toasty.success(`Os campos ${campos.join(',')} foram alterados e o lançamento ${this.lancamento.descricao} foi atualizado com sucesso.`);

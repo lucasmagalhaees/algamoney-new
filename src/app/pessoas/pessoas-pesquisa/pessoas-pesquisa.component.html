@@ -51,9 +51,10 @@
                   <td class="text-center" (click)="mudarStatus(pessoas)" [pTooltip] = "pessoas.ativo ? 'Desativar' : 'Ativar'" tooltipPosition="top"><a style="color: inherit; text-decoration: none" href="#">{{pessoas.ativo ? 'Ativo' : 'Inativo'}}</a></td>
                   <td class="text-center">
                       <button
+                      [disabled]="!this.auth.temPermissao('ROLE_CADASTRAR_PESSOA')"
                       [routerLink]="['/pessoas/atualiza', pessoas.codigo]"
                        pButton icon="pi pi-pencil" pTooltip="Editar" tooltipPosition="top"></button>
-                      <button pButton icon="pi pi-trash" pTooltip="Excluir"
+                      <button [disabled]="!this.auth.temPermissao('ROLE_CADASTRAR_PESSOA')" pButton icon="pi pi-trash" pTooltip="Excluir"
                       (click)="confirmarExclusao(pessoas)"
                       tooltipPosition="top" style="margin-left:5px"></button>
                   </td>

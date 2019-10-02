@@ -9,7 +9,7 @@ export class MoneyHttpInterceptor implements HttpInterceptor {
 
     constructor(private auth: AuthService) {}
 
-    intercept(req: HttpRequest, next: HttpHandler): Observable> {
+    intercept(req: HttpRequest<any>, next: HttpHandler): Observable<any> {
 
         if (!req.url.includes('/oauth/token') && this.auth.isAccessTokenInvalido()) {
 

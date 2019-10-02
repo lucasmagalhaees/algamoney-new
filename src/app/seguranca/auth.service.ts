@@ -76,6 +76,13 @@ export class AuthService {
     localStorage.setItem('token', token);
   }
 
+  isAccessTokenInvalido() {
+    const token = localStorage.getItem('token');
+
+    return !token || this.jwt.isTokenExpired(token);
+  }
+
+
   private carregarToken(){
     const token = localStorage.getItem('token');
 
