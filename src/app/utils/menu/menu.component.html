@@ -16,6 +16,13 @@
   <h2>{{auth.jwtPayload?.nome }}</h2>
 </div>
 
+<div class="text-center mt-2 mb-2">
+
+  <button
+  (click)="logout();toggleMenu()"
+  pButton icon="pi pi-sign-out" class="ui-button-secondary ui-buttom-rounded" pTooltip="Logout" tooltipPosition="bottom"></button>
+</div>
+
 
 <p-panelMenu [model]="menuService.items" [style]="{'width':'300px'}"></p-panelMenu>
 
