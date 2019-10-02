@@ -10,6 +10,7 @@ import 'rxjs/add/operator/toPromise';
 export class AuthService {
 
   oauthUrl = 'https://alga-basic.herokuapp.com/oauth/token';
+  tokensRevokeUrl = 'https://alga-basic.herokuapp.com/tokens/revoke';
   jwtPayload: any;
 
 
@@ -17,12 +18,22 @@ export class AuthService {
     private http: HttpClient,
     private jwt: JwtHelperService
 
+
   ) {
     this.carregarToken();
   }
 
   temPermissao(permissao: string){
     return this.jwtPayload && this.jwtPayload.authorities.includes(permissao);
+  }
+
+
+  logout() {
+    return this.http.delete(this.tokensRevokeUrl, { withCredentials: true })
+      .toPromise()
+      .then(() => {
+        this.limparAccessToken();
+      });
   }
 
   login(usuario: string, senha: string): Promise<void>{
@@ -80,6 +91,11 @@ export class AuthService {
     const token = localStorage.getItem('token');
 
     return !token || this.jwt.isTokenExpired(token);
+  }
+
+  limparAccessToken() {
+    localStorage.removeItem('token');
+    this.jwtPayload = null;
   }
 
   temQualquerPermissao(roles) {
