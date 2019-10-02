@@ -1,3 +1,5 @@
+import { AuthGuard } from './seguranca/auth.guard';
+import { NaoAutorizadoComponent } from './utils/nao-autorizado/nao-autorizado.component';
 export function tokenGetter(): string {
   return localStorage.getItem('token');
 }
@@ -79,7 +81,8 @@ registerLocaleData(localePt);
     BreadcrumbComponent,
     PessoasAtualizacaoComponent,
     PaginaNaoEncontradaComponent,
-    LoginFormComponent
+    LoginFormComponent,
+    NaoAutorizadoComponent
   ],
   imports: [
     BrowserModule,
@@ -121,6 +124,7 @@ registerLocaleData(localePt);
     DatePipe,
     AuthService,
     JwtHelperService,
+    AuthGuard,
 
   { provide: LOCALE_ID, useValue: 'pt-BR' }
 

@@ -1,3 +1,4 @@
+import { AuthService } from './../../seguranca/auth.service';
 import { FormControl } from '@angular/forms';
 import { PessoaService, PessoaFiltro } from './../pessoa.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
@@ -30,7 +31,9 @@ export class PessoasPesquisaComponent implements OnInit {
               private toasty: ToastyService,
               private confirmation: ConfirmationService,
               private errorHandler: ErrorHandlerService,
-              private title: Title
+              private title: Title,
+              private auth: AuthService
+
     ) {}
 
   reset(form:FormControl){

@@ -42,7 +42,9 @@ export class AppComponent {
     return this.router.url !== '/login';
   }
   escondeNavbar(){
-    return this.router.url === '/page-not-found';
+   if((this.router.url === '/page-not-found') || (this.router.url === '/nao-autorizado')){
+     return true;
+   };
   }
 
 

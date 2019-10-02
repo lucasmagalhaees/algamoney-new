@@ -1,3 +1,4 @@
+import { AuthGuard } from './auth.guard';
 import { AuthService } from './auth.service';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -22,7 +23,8 @@ import { MoneyHttpInterceptor } from '../seguranca/money-http-interceptor';
       provide: HTTP_INTERCEPTORS,
       useClass: MoneyHttpInterceptor,
       multi: true
-  }
+  },
+  AuthGuard
 
 
   ]

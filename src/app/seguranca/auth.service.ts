@@ -82,6 +82,16 @@ export class AuthService {
     return !token || this.jwt.isTokenExpired(token);
   }
 
+  temQualquerPermissao(roles) {
+    for (const role of roles) {
+      if (this.temPermissao(role)) {
+        return true;
+      }
+    }
+
+    return false;
+  }
+
 
   private carregarToken(){
     const token = localStorage.getItem('token');

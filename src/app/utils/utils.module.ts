@@ -13,6 +13,7 @@ import { ModToastComponent } from './mod-toast/mod-toast.component';
 import { ModMessageComponent } from './mod-message/mod-message.component';
 import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
 import { ErrorHandlerService } from './error-handler.service';
+import { NaoAutorizadoComponent } from './nao-autorizado/nao-autorizado.component';
 
 
 
@@ -32,7 +33,8 @@ import { ErrorHandlerService } from './error-handler.service';
     ToastModule,
     ModMessageComponent,
     BreadcrumbComponent,
-    PaginaNaoEncontradaComponent
+    PaginaNaoEncontradaComponent,
+    NaoAutorizadoComponent
 
 
   ],
@@ -42,7 +44,8 @@ import { ErrorHandlerService } from './error-handler.service';
   NavbarComponent,
   SidebarComponent,
   ValidacaoFormComponent,
-  PaginaNaoEncontradaComponent
+  PaginaNaoEncontradaComponent,
+  NaoAutorizadoComponent
 
 
   ],

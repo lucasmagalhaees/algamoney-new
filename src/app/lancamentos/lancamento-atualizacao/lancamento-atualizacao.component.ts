@@ -53,8 +53,8 @@ export class LancamentoAtualizacaoComponent implements OnInit {
 
       return this.lancamentoService.buscarPorCodigo(codigo)
       .then(lancamento => {
-        this.lancamentoCopia = Object.assign({}, lancamento);
-            this.lancamento = lancamento;
+        this.lancamentoCopia = JSON.parse(JSON.stringify(lancamento));
+        this.lancamento = lancamento;
            })
       .catch(erro => this.errorHandler.handle(erro));
     }
@@ -97,14 +97,14 @@ export class LancamentoAtualizacaoComponent implements OnInit {
       let campos: string[] = new Array();
 
       if (lancamento.descricao !== this.lancamentoCopia.descricao) {
-          campos.push('Descricao');
+          campos.push('Descrição');
       }
       if (moment(lancamento.dataPagamento).format('dd/MM/yyyy') !== moment(this.lancamentoCopia.dataPagamento).format('dd/MM/yyyy')) {
-          campos.push('Data Pagamento');
+          campos.push('Data de Pagamento');
       }
 
       if (moment(lancamento.dataVencimento).format('dd/MM/yyyy') !== moment(this.lancamentoCopia.dataVencimento).format('dd/MM/yyyy')) {
-          campos.push('Data Vencimento');
+          campos.push('Data de Vencimento');
       }
       if (lancamento.pessoa.codigo !== this.lancamentoCopia.pessoa.codigo) {
           campos.push('Pessoa');
@@ -120,7 +120,7 @@ export class LancamentoAtualizacaoComponent implements OnInit {
       }
       //...
       // console.log(campos);
-      this.toasty.success(`Os campos ${campos.join(',')} foram alterados e o lançamento ${this.lancamento.descricao} foi atualizado com sucesso.`);
+      this.toasty.success(`Alteração em ${campos.join(', ')}. ${this.lancamento.descricao} está atualizado com sucesso.`);
   }
 
     novo(form: FormControl){

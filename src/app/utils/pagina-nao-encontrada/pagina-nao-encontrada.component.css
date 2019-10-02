@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css?family=Dosis:300,400,700,800");
 
+
 /** Styles for the 403 Page **/
 .fill{
   background: #24344c;
@@ -36,14 +37,14 @@
   display: block;
   margin: 0 auto;
   position: relative;
-  margin-top: 8vh;
+  margin-top: 1vh;
 }
 
 .permission_denied h1 {
   text-align: center;
   color: #fff;
   font-family: "Dosis", sans-serif;
-  font-size: 100px;
+  font-size: 70px;
   margin-bottom: 0px;
   font-weight: 800;
 }
