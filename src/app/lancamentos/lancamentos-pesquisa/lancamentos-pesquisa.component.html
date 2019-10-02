@@ -77,7 +77,7 @@
         </div>
 
         <div class="ui-g-12">
-          <button routerLink="/lancamentos/novo" pButton label="Novo Lançamento"></button>
+          <button routerLink="/lancamentos/novo" [disabled]="!auth.temPermissao('ROLE_CADASTRAR_LANCAMENTO')" pButton label="Novo Lançamento"></button>
 
         </div>
 

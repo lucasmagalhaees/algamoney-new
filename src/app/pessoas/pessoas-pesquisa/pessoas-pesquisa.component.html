@@ -48,7 +48,22 @@
                   <td class="text-center">{{pessoas.nome}}</td>
                   <td class="text-center">{{pessoas.endereco.cidade}}</td>
                   <td class="text-center">{{pessoas.endereco.estado}}</td>
-                  <td class="text-center" (click)="mudarStatus(pessoas)" [pTooltip] = "pessoas.ativo ? 'Desativar' : 'Ativar'" tooltipPosition="top"><a style="color: inherit; text-decoration: none" href="#">{{pessoas.ativo ? 'Ativo' : 'Inativo'}}</a></td>
+                  <!-- <td class="text-center" (click)="mudarStatus(pessoas)" [pTooltip] = "pessoas.ativo ? 'Desativar' : 'Ativar'" tooltipPosition="top"><a style="color: inherit; text-decoration: none" href="#">{{pessoas.ativo ? 'Ativo' : 'Inativo'}}</a></td> -->
+                  <td class="text-center" *ngIf="!auth.temPermissao('ROLE_CADASTRAR_PESSOA'); else podeExcluir">{{pessoas.ativo ? 'Ativo' : 'Inativo'}}</td>
+
+                  <ng-template #podeExcluir>
+                    <td class="text-center"
+                        (click)="mudarStatus(pessoas)"
+                        [pTooltip] = "pessoas.ativo ? 'Desativar' : 'Ativar'"
+                        tooltipPosition="top">
+                      <a style="color: inherit; text-decoration: none" href="#">
+                        {{pessoas.ativo ? 'Ativo' : 'Inativo'}}
+                      </a>
+                    </td>
+                  </ng-template>
+
+
+
                   <td class="text-center">
                       <button
                       [disabled]="!this.auth.temPermissao('ROLE_CADASTRAR_PESSOA')"
@@ -65,7 +80,7 @@
     </div>
 
     <div class="ui-g-12">
-      <button routerLink="/pessoas/novo" pButton label="Nova Pessoa"></button>
+      <button routerLink="/pessoas/novo" [disabled]="!auth.temPermissao('ROLE_CADASTRAR_PESSOA')" pButton label="Nova Pessoa"></button>
 
     </div>
 
