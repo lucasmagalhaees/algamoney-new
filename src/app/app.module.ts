@@ -1,3 +1,4 @@
+import { MenuService } from './menu.service';
 import { AuthGuard } from './seguranca/auth.guard';
 import { NaoAutorizadoComponent } from './utils/nao-autorizado/nao-autorizado.component';
 export function tokenGetter(): string {
@@ -125,6 +126,7 @@ registerLocaleData(localePt);
     AuthService,
     JwtHelperService,
     AuthGuard,
+    MenuService,
 
   { provide: LOCALE_ID, useValue: 'pt-BR' }
 

@@ -1,3 +1,4 @@
+import { MenuService } from './../../menu.service';
 import { FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ErrorHandlerService } from 'src/app/utils/error-handler.service';
@@ -13,13 +14,15 @@ export class LoginFormComponent {
 
   constructor(private auth: AuthService,
     private errorHandler: ErrorHandlerService,
-    private router: Router) { }
+    private router: Router,
+    private menuService: MenuService) { }
 
     senhaInput: string;
 
  login(usuario: string, senha: string){
    this.auth.login(usuario, senha)
    .then(() => {
+    this.menuService.reset();
      this.router.navigate(['lancamentos']);
    })
     .catch(erro => {
