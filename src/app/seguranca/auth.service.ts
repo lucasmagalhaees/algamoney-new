@@ -25,6 +25,7 @@ export class AuthService {
     this.oauthUrl = `${environment.apiUrl}/oauth/token`;
     this.tokensRevokeUrl = `${environment.apiUrl}/tokens/revoke`;
 
+
     this.carregarToken();
   }
 
@@ -65,9 +66,9 @@ export class AuthService {
   }
 
   obterNovoAccessToken(): Promise<void> {
-    const headers = new HttpHeaders();
-    headers.append('Content-Type', 'application/x-www-form-urlencoded');
-    headers.append('Authorization', 'Basic YW5ndWxhcjpAbmd1bEByMA==');
+    const headers = new HttpHeaders()
+    .append('Content-Type', 'application/x-www-form-urlencoded')
+    .append('Authorization', 'Basic YW5ndWxhcjpAbmd1bEByMA==');
 
     const body = 'grant_type=refresh_token';
 
