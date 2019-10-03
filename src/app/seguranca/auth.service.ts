@@ -42,7 +42,7 @@ export class AuthService {
     .append('Authorization', 'Basic YW5ndWxhcjphbmd1bGFyMTIz');
     const body = `username=${usuario}&password=${senha}&grant_type=password`;
 
-    return this.http.post(this.oauthUrl, body, { headers })
+    return this.http.post(this.oauthUrl, body, { headers, withCredentials: true })
     .toPromise()
     .then(response => {
       console.log(response);
