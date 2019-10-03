@@ -2,6 +2,8 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/toPromise';
+import { environment } from './../../environments/environment';
+
 
 
 @Injectable({
@@ -9,8 +11,8 @@ import 'rxjs/add/operator/toPromise';
 })
 export class AuthService {
 
-  oauthUrl = 'https://alga-basic.herokuapp.com/oauth/token';
-  tokensRevokeUrl = 'https://alga-basic.herokuapp.com/tokens/revoke';
+  oauthUrl: string;
+  tokensRevokeUrl: string;
   jwtPayload: any;
 
 
@@ -20,6 +22,9 @@ export class AuthService {
 
 
   ) {
+    this.oauthUrl = `${environment.apiUrl}/oauth/token`;
+    this.tokensRevokeUrl = `${environment.apiUrl}/tokens/revoke`;
+
     this.carregarToken();
   }
 
@@ -39,7 +44,7 @@ export class AuthService {
   login(usuario: string, senha: string): Promise<void>{
     const headers = new HttpHeaders()
     .append('Content-Type', 'application/x-www-form-urlencoded')
-    .append('Authorization', 'Basic YW5ndWxhcjphbmd1bGFyMTIz');
+    .append('Authorization', 'Basic YW5ndWxhcjpAbmd1bEByMA==');
     const body = `username=${usuario}&password=${senha}&grant_type=password`;
 
     return this.http.post(this.oauthUrl, body, { headers, withCredentials: true })
@@ -62,7 +67,7 @@ export class AuthService {
   obterNovoAccessToken(): Promise<void> {
     const headers = new HttpHeaders();
     headers.append('Content-Type', 'application/x-www-form-urlencoded');
-    headers.append('Authorization', 'Basic YW5ndWxhcjphbmd1bGFyMTIz');
+    headers.append('Authorization', 'Basic YW5ndWxhcjpAbmd1bEByMA==');
 
     const body = 'grant_type=refresh_token';
 

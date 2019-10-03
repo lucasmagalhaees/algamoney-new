@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 import 'rxjs/add/operator/toPromise';
 import { Pessoa } from '../utils/model';
+import { environment } from './../../environments/environment';
+
 
 
 export class PessoaFiltro {
@@ -16,9 +18,13 @@ export class PessoaFiltro {
 })
 export class PessoaService {
 
-  pessoasUrl = 'https://alga-basic.herokuapp.com/pessoas';
+  pessoasUrl: string;
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient) {
+
+    this.pessoasUrl = `${environment.apiUrl}/pessoas`;
+
+   }
 
   pesquisar(filtro: PessoaFiltro): Promise<any> {
     const headers = new HttpHeaders().append('Authorization', 'Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg==');

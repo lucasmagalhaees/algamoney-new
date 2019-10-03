@@ -3,6 +3,8 @@ import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 import 'rxjs/add/operator/toPromise';
 import * as moment from 'moment';
 import { Lancamento } from '../utils/model';
+import { environment } from './../../environments/environment';
+
 
 
 
@@ -19,9 +21,13 @@ export class LancamentoFiltro {
 })
 export class LancamentoService {
 
-  lancamentosUrl = 'https://alga-basic.herokuapp.com/lancamentos';
+  lancamentosUrl: string;
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient) {
+
+    this.lancamentosUrl = `${environment.apiUrl}/lancamentos`;
+
+  }
 
 
   pesquisar(filtro: LancamentoFiltro): Promise<any> {
