@@ -13,6 +13,21 @@
   background-repeat: repeat;
 }
 
+#botao{
+  background: transparent;
+  border: none;
+  /* border-radius: round; */
+}
+
+/* #botao:hover{
+  border: 1px solid #F29F05;
+  color: #F29F05;
+}
+#botao:active{
+  border: 1px solid #F29F05;
+  color: #F29F05;
+} */
+
 .sidebar-close{
   font-size: 25px;
   color: white;
@@ -109,3 +124,6 @@ li{
     text-align: center;
     font-size: 50px;
   }
+
+  /*****/
+

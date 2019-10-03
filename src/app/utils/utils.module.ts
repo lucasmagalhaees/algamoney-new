@@ -18,10 +18,12 @@ import { NaoAutorizadoComponent } from './nao-autorizado/nao-autorizado.componen
 
 
 
+
 @NgModule({
   imports: [
     CommonModule,
     RouterModule
+
   ],
   declarations: [
     MenuComponent,

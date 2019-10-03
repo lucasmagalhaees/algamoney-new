@@ -21,6 +21,7 @@ export class MenuComponent {
                private router: Router
                ) {}
 
+
   @Output() eventoNavbar = new EventEmitter();
 
   menuState: any;

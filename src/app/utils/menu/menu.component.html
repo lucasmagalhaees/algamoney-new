@@ -16,11 +16,12 @@
   <h2>{{auth.jwtPayload?.nome }}</h2>
 </div>
 
-<div class="text-center mt-2 mb-2">
+<div class="text-center mt-2 mb-4">
 
-  <button
+  <button class="ui-button-warning ui-button-raised"
   (click)="logout();toggleMenu()"
-  pButton icon="pi pi-sign-out" class="ui-button-secondary ui-buttom-rounded" pTooltip="Logout" tooltipPosition="bottom"></button>
+  pButton icon="pi pi-sign-out" label="Logout">
+</button>
 </div>
 
 
