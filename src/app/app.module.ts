@@ -58,6 +58,7 @@ import { MessageComponent } from './utils/message/message.component';
 import { ModToastComponent } from './utils/mod-toast/mod-toast.component';
 import { ConfirmDialogModule } from 'primeng/components/confirmdialog/confirmdialog';
 import { AppRoutingModule } from './app-routing.module';
+import { SegurancaModule } from './seguranca/seguranca.module';
 
 registerLocaleData(localePt);
 
@@ -108,6 +109,7 @@ registerLocaleData(localePt);
     ToastyModule.forRoot(),
     RouterModule,
     AppRoutingModule,
+    SegurancaModule,
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,
